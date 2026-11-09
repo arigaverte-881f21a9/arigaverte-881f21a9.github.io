@@ -1,0 +1,1098 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>库片网官网 - 影视片库聚合导航</title>
+<meta name="description" content="库片网官网聚合各类型影视片库条目，包含华语剧集、欧美电影、日韩番剧、纪录片与经典修复片的片源索引、更新动态和选片指南，适合想按类型和评分快速找片的观众。">
+<meta name="keywords" content="影视片库导航,剧集更新日历,电影评分榜,番剧索引,纪录片推荐">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231c2340'/%3E%3Crect x='12' y='16' width='10' height='32' rx='2' fill='%23f0b429'/%3E%3Crect x='26' y='16' width='10' height='32' rx='2' fill='%23e8543f'/%3E%3Crect x='40' y='16' width='10' height='32' rx='2' fill='%234f9e8f'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#1c2340;
+  --ink-2:#2e3757;
+  --paper:#f6f3ec;
+  --panel:#ffffff;
+  --line:#ddd6c8;
+  --line-soft:#ece7db;
+  --gold:#b8801a;
+  --gold-soft:#f4e3bd;
+  --red:#c0452f;
+  --teal:#3d7f74;
+  --muted:#6e6a62;
+  --radius:10px;
+  --shadow:0 1px 2px rgba(28,35,64,.06),0 6px 18px rgba(28,35,64,.06);
+  --sticky-h:104px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  font-size:15px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700;}
+p{margin:0 0 .8em;}
+ul,ol{margin:0 0 .8em;padding-left:1.3em;}
+li{margin-bottom:.35em;}
+img{display:block;max-width:100%;}
+button{font:inherit;cursor:pointer;}
+
+/* ---------- 吸顶区 ---------- */
+.sticky-wrap{
+  position:sticky;top:0;z-index:50;
+}
+.announce{
+  background:var(--ink);
+  color:#f2ede1;
+  font-size:13px;
+  padding:7px 20px;
+  display:flex;
+  gap:14px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  text-align:center;
+}
+.announce b{color:var(--gold-soft);font-weight:600;}
+.announce .dot{opacity:.45;}
+
+.site-head{
+  background:rgba(246,243,236,.96);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 1px 0 rgba(28,35,64,.03);
+}
+.head-inner{
+  max-width:1340px;margin:0 auto;
+  padding:10px 22px;
+  display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.brand svg{display:block;}
+.brand-text{font-size:20px;font-weight:800;letter-spacing:.5px;color:var(--ink);}
+.brand-sub{font-size:11px;color:var(--muted);letter-spacing:1.5px;display:block;font-weight:500;}
+.head-nav{
+  display:flex;gap:4px;flex-wrap:wrap;flex:1;min-width:200px;
+}
+.head-nav a{
+  font-size:13.5px;padding:5px 10px;border-radius:6px;color:var(--ink-2);
+  white-space:nowrap;
+}
+.head-nav a:hover,.head-nav a:focus-visible{background:var(--gold-soft);outline:none;}
+.head-search{
+  display:flex;align-items:center;gap:6px;flex-shrink:0;
+}
+.head-search input{
+  width:170px;padding:6px 10px;border:1px solid var(--line);
+  border-radius:6px;background:#fff;font-size:13px;color:var(--ink);
+}
+.head-search input:focus{outline:2px solid var(--gold);outline-offset:1px;}
+.head-search button{
+  padding:6px 12px;border:1px solid var(--ink);background:var(--ink);color:#f6f3ec;
+  border-radius:6px;font-size:13px;
+}
+.head-search button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
+/* ---------- 布局 ---------- */
+.wrap{
+  max-width:1340px;margin:0 auto;padding:0 22px;
+}
+.layout{
+  display:grid;
+  grid-template-columns:180px minmax(0,1fr) 248px;
+  gap:26px;
+  padding:26px 0 10px;
+  align-items:start;
+}
+[id]{scroll-margin-top:calc(var(--sticky-h) + 12px);}
+
+/* ---------- 首屏 ---------- */
+.hero{
+  background:linear-gradient(135deg,#1c2340 0%,#2b3355 55%,#3a2f3f 100%);
+  color:#f4efe4;
+  border-radius:14px;
+  overflow:hidden;
+  position:relative;
+  margin-bottom:26px;
+}
+.hero-inner{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:24px;padding:34px 34px 30px;
+  align-items:center;
+}
+.hero-kicker{
+  font-size:12px;letter-spacing:3px;color:var(--gold-soft);font-weight:600;margin-bottom:10px;
+}
+.hero h1{
+  font-size:38px;letter-spacing:1px;color:#fff;margin-bottom:14px;
+}
+.hero p.lead{
+  font-size:14.5px;color:#d9d3c4;max-width:46ch;margin-bottom:18px;
+}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+.hero-tags a{
+  font-size:12.5px;padding:4px 11px;border:1px solid rgba(244,227,189,.4);
+  border-radius:999px;color:#f4e3bd;
+}
+.hero-tags a:hover,.hero-tags a:focus-visible{background:rgba(244,227,189,.16);outline:none;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{
+  display:inline-block;background:var(--gold);color:#1c2340;font-weight:700;
+  padding:9px 20px;border-radius:8px;font-size:14px;
+}
+.btn-ghost{
+  display:inline-block;border:1px solid rgba(244,239,228,.5);color:#f4efe4;
+  padding:9px 20px;border-radius:8px;font-size:14px;
+}
+.btn-primary:hover{background:#d5992a;}
+.btn-ghost:hover{background:rgba(255,255,255,.1);}
+.hero-visual{position:relative;min-height:200px;}
+.hero-visual svg{width:100%;height:auto;display:block;}
+
+/* ---------- 频道索引 ---------- */
+.chan{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:12px 0;position:sticky;top:calc(var(--sticky-h) + 20px);
+}
+.chan h2{
+  font-size:12px;letter-spacing:2px;color:var(--muted);padding:0 16px 8px;
+  font-weight:600;
+}
+.chan nav{display:flex;flex-direction:column;}
+.chan nav a{
+  font-size:13.5px;padding:7px 16px;border-left:3px solid transparent;color:var(--ink-2);
+}
+.chan nav a:hover,.chan nav a:focus-visible{background:var(--gold-soft);border-left-color:var(--gold);outline:none;}
+
+/* ---------- 主栏通用 ---------- */
+.block{
+  margin-bottom:30px;
+}
+.block-head{
+  display:flex;align-items:baseline;gap:12px;margin-bottom:14px;
+  border-bottom:2px solid var(--ink);padding-bottom:8px;flex-wrap:wrap;
+}
+.block-head h2{
+  font-size:20px;letter-spacing:.5px;
+}
+.block-head .h2-note{
+  font-size:12.5px;color:var(--muted);font-weight:400;
+}
+.section-lead{
+  font-size:14px;color:var(--muted);margin:-6px 0 14px;
+}
+
+/* 概览 */
+.overview-text{font-size:14.5px;color:var(--ink-2);}
+.overview-text p{margin-bottom:.9em;}
+
+/* 卡片网格 */
+.card-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:16px;
+}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);
+  transition:transform .15s ease;
+}
+.card:hover{transform:translateY(-2px);}
+.card img{width:100%;height:132px;object-fit:cover;}
+.card-body{padding:11px 13px 13px;display:flex;flex-direction:column;gap:6px;flex:1;}
+.card-type{
+  align-self:flex-start;font-size:11px;padding:1px 8px;border-radius:4px;
+  background:var(--gold-soft);color:#7a5410;font-weight:600;
+}
+.card-type.t-teal{background:#dcece8;color:#2f655c;}
+.card-type.t-red{background:#f7ddd7;color:#a2371f;}
+.card h3{font-size:15px;line-height:1.4;}
+.card .desc{font-size:12.8px;color:var(--muted);line-height:1.6;flex:1;}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.card-tags span{
+  font-size:11px;padding:1px 7px;border:1px solid var(--line-soft);border-radius:4px;color:var(--muted);
+}
+.card-meta{
+  display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);
+  border-top:1px dashed var(--line-soft);padding-top:7px;
+}
+.card-meta .score{color:var(--red);font-weight:700;}
+
+/* 动态列表 */
+.update-list{list-style:none;padding:0;margin:0;}
+.update-list li{
+  display:grid;grid-template-columns:88px minmax(0,1fr);gap:14px;
+  padding:10px 12px;border-bottom:1px solid var(--line-soft);align-items:baseline;
+}
+.update-list li:last-child{border-bottom:none;}
+.update-list .u-time{font-size:12px;color:var(--gold);font-weight:600;white-space:nowrap;}
+.update-list .u-title{font-weight:700;font-size:14px;color:var(--ink);}
+.update-list .u-desc{font-size:13px;color:var(--muted);}
+.panel-box{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:6px 14px;
+}
+
+/* 分类入口 */
+.cat-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;
+}
+.cat-item{
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;
+  padding:12px 13px;display:block;transition:border-color .15s,background .15s;
+}
+.cat-item strong{display:block;font-size:15px;margin-bottom:2px;}
+.cat-item small{font-size:12px;color:var(--muted);}
+.cat-item:hover,.cat-item:focus-visible{border-color:var(--gold);background:#fdf9ee;outline:none;}
+
+/* 深度解析 */
+.deep{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 26px;
+}
+.deep h3{
+  font-size:17px;margin:20px 0 8px;padding-left:10px;border-left:4px solid var(--gold);
+}
+.deep h3:first-child{margin-top:0;}
+.deep p,.deep li{font-size:14.3px;color:var(--ink-2);}
+.deep ul{padding-left:1.2em;}
+.compare-table{
+  width:100%;border-collapse:collapse;margin:10px 0 16px;font-size:13.5px;
+}
+.compare-table th,.compare-table td{
+  border:1px solid var(--line-soft);padding:7px 10px;text-align:left;vertical-align:top;
+}
+.compare-table th{background:#faf6ec;font-weight:700;color:var(--ink);}
+.compare-table td{color:var(--ink-2);}
+
+/* 体验路径 */
+.steps{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;
+}
+.step{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 16px;position:relative;
+}
+.step .num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--gold-soft);
+  font-size:13px;font-weight:700;margin-bottom:8px;
+}
+.step h3{font-size:14.5px;margin-bottom:6px;}
+.step p{font-size:13px;color:var(--muted);margin:0;}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:8px;}
+details{
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;
+  padding:0 16px;
+}
+details[open]{border-color:var(--gold);}
+summary{
+  cursor:pointer;font-weight:700;font-size:14.5px;padding:12px 0;list-style:none;
+  display:flex;justify-content:space-between;gap:10px;align-items:center;
+}
+summary::-webkit-details-marker{display:none;}
+summary::after{content:"＋";color:var(--gold);font-weight:700;flex-shrink:0;}
+details[open] summary::after{content:"－";}
+details p{font-size:13.5px;color:var(--ink-2);padding-bottom:12px;margin:0;}
+
+/* 评论 */
+.comment-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;
+}
+.comment{
+  background:var(--panel);border:1px solid var(--line-soft);border-radius:8px;
+  padding:11px 14px;
+}
+.comment .who{font-size:13px;font-weight:700;color:var(--teal);margin-bottom:3px;}
+.comment .txt{font-size:13.2px;color:var(--ink-2);}
+.comment .when{font-size:11px;color:#a09a8e;margin-top:5px;}
+
+/* 资讯 */
+.news-grid{display:flex;flex-direction:column;gap:0;}
+.news-item{
+  display:grid;grid-template-columns:126px minmax(0,1fr);gap:14px;
+  padding:12px 0;border-bottom:1px solid var(--line-soft);align-items:start;
+}
+.news-item:last-child{border-bottom:none;}
+.news-item img{width:126px;height:84px;object-fit:cover;border-radius:6px;}
+.news-item h3{font-size:14.5px;margin-bottom:3px;}
+.news-item .date{font-size:11.5px;color:var(--gold);font-weight:600;}
+.news-item p{font-size:12.8px;color:var(--muted);margin:2px 0 0;}
+
+/* 相关推荐 */
+.rel-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.rel-tags a{
+  font-size:13px;padding:5px 13px;border:1px solid var(--line);border-radius:999px;
+  background:var(--panel);color:var(--ink-2);
+}
+.rel-tags a:hover,.rel-tags a:focus-visible{border-color:var(--gold);background:#fdf9ee;outline:none;}
+
+/* 榜单 */
+.rank-list{list-style:none;padding:0;margin:0;counter-reset:rk;}
+.rank-list li{
+  display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;align-items:center;
+  padding:9px 4px;border-bottom:1px dashed var(--line-soft);
+}
+.rank-list li:last-child{border-bottom:none;}
+.rank-list .rk{
+  counter-increment:rk;font-weight:800;font-size:15px;color:var(--muted);
+  display:flex;justify-content:center;
+}
+.rank-list li:nth-child(-n+3) .rk{color:var(--red);}
+.rank-list .rk::before{content:counter(rk);}
+.rank-list .r-name{font-size:14px;font-weight:600;}
+.rank-list .r-sub{font-size:12px;color:var(--muted);}
+.rank-list .r-val{font-size:12.5px;color:var(--gold);font-weight:700;white-space:nowrap;}
+
+/* 侧栏 */
+.side-box{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 16px;margin-bottom:18px;
+}
+.side-box h2{
+  font-size:14px;letter-spacing:1px;margin-bottom:10px;padding-bottom:7px;
+  border-bottom:1px solid var(--line-soft);
+}
+.side-list{list-style:none;padding:0;margin:0;}
+.side-list li{padding:6px 0;border-bottom:1px dashed var(--line-soft);font-size:13px;}
+.side-list li:last-child{border-bottom:none;}
+.side-list .s-name{font-weight:600;}
+.side-list .s-meta{font-size:11.5px;color:var(--muted);}
+.mini-timeline{list-style:none;padding:0;margin:0;font-size:12.8px;}
+.mini-timeline li{
+  padding:0 0 12px 14px;border-left:2px solid var(--gold-soft);position:relative;
+}
+.mini-timeline li:last-child{padding-bottom:0;}
+.mini-timeline li::before{
+  content:"";position:absolute;left:-5px;top:6px;width:8px;height:8px;border-radius:50%;
+  background:var(--gold);
+}
+.mini-timeline .t{font-size:11.5px;color:var(--gold);font-weight:700;}
+
+/* 页尾 */
+.site-foot{
+  background:var(--ink);color:#c9c3b4;margin-top:30px;padding:36px 0 20px;font-size:13px;
+}
+.foot-inner{max-width:1340px;margin:0 auto;padding:0 22px;}
+.foot-top{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:28px;margin-bottom:26px;}
+.foot-brand .bt{font-size:18px;color:#fff;font-weight:800;margin-bottom:6px;}
+.foot-brand p{font-size:12.5px;color:#9d9789;max-width:32ch;}
+.foot-col h3{font-size:13px;color:var(--gold-soft);margin-bottom:8px;letter-spacing:1px;}
+.foot-col ul{list-style:none;padding:0;margin:0;}
+.foot-col li{margin-bottom:5px;}
+.foot-col a{color:#c9c3b4;font-size:12.5px;}
+.foot-col a:hover{color:#fff;}
+.foot-bottom{
+  border-top:1px solid rgba(255,255,255,.12);padding-top:14px;
+  font-size:11.5px;color:#8a8578;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+
+/* 搜索无结果 */
+.no-result{
+  display:none;padding:14px;border:1px dashed var(--line);border-radius:8px;
+  color:var(--muted);font-size:13.5px;background:#fdfaf2;
+}
+.no-result.show{display:block;}
+
+/* 响应式 */
+@media (max-width:1024px){
+  .layout{grid-template-columns:180px minmax(0,1fr);}
+  .layout > .side{grid-column:1 / -1;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+  .layout > .side .side-box{margin-bottom:0;}
+  .hero-inner{grid-template-columns:1fr;padding:28px;}
+  .hero-visual{min-height:0;max-width:420px;}
+  .foot-top{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:740px){
+  .layout{grid-template-columns:1fr;gap:20px;padding-top:18px;}
+  .chan{position:static;}
+  .chan nav{flex-direction:row;flex-wrap:wrap;gap:2px;}
+  .chan nav a{border-left:none;border-bottom:2px solid transparent;padding:6px 10px;font-size:12.5px;}
+  .chan nav a:hover,.chan nav a:focus-visible{border-left:none;border-bottom-color:var(--gold);}
+  .head-inner{gap:12px;}
+  .head-search{width:100%;}
+  .head-search input{flex:1;width:auto;}
+  .hero h1{font-size:28px;}
+  .hero-inner{padding:22px;}
+  .block-head h2{font-size:18px;}
+  .deep{padding:16px 16px;}
+  .update-list li{grid-template-columns:1fr;gap:2px;}
+  .news-item{grid-template-columns:1fr;}
+  .news-item img{width:100%;height:150px;}
+  .foot-top{grid-template-columns:1fr;}
+  .site-foot{padding-top:26px;}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-wrap">
+  <div class="announce">
+    <span><b>11 月 8 日新增</b> 华语剧集《雾港档案》全 24 集入库</span>
+    <span class="dot">·</span>
+    <span><b>本周新增</b> 46 条片源索引，修复片 12 部</span>
+    <span class="dot">·</span>
+    <span><b>番剧板块</b> 秋季新番第 6 集集中更新</span>
+  </div>
+  <header class="site-head">
+    <div class="head-inner">
+      <a class="brand" href="/#top" aria-label="库片网官网首页">
+        <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="12" fill="#1c2340"/>
+          <rect x="12" y="16" width="10" height="32" rx="2" fill="#f0b429"/>
+          <rect x="26" y="16" width="10" height="32" rx="2" fill="#e8543f"/>
+          <rect x="40" y="16" width="10" height="32" rx="2" fill="#4f9e8f"/>
+        </svg>
+        <span>
+          <span class="brand-text">库片网官网</span>
+          <span class="brand-sub">KU PIAN · 片库索引</span>
+        </span>
+      </a>
+      <nav class="head-nav" aria-label="主题导航">
+        <a href="/#overview">片库概览</a>
+        <a href="/#picks">精选片单</a>
+        <a href="/#updates">更新动态</a>
+        <a href="/#cats">分类入口</a>
+        <a href="/#deep">深度解析</a>
+        <a href="/#guide">选片路径</a>
+        <a href="/#faq">常见问答</a>
+        <a href="/#news">片库资讯</a>
+      </nav>
+      <div class="head-search" role="search">
+        <input id="q" type="search" placeholder="搜索条目名 / 类型" aria-label="搜索片库条目">
+        <button type="button" id="qbtn">查找</button>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main id="top">
+  <div class="wrap">
+
+    <!-- 首屏 -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-kicker">片库 · 索引 · 更新记录</div>
+          <h1 id="hero-title">库片网官网</h1>
+          <p class="lead">按类型、年份与评分梳理的影视片库索引，覆盖华语剧集、欧美电影、日韩番剧、纪录片与经典修复片，附集数进度、片源状态与选片判断依据。</p>
+          <div class="hero-tags">
+            <a href="/#picks">华语悬疑剧</a>
+            <a href="/#picks">欧美犯罪片</a>
+            <a href="/#picks">日韩番剧</a>
+            <a href="/#picks">自然纪录片</a>
+            <a href="/#picks">4K 修复经典</a>
+          </div>
+          <div class="hero-actions">
+            <a class="btn-primary" href="/#picks">进入精选片单</a>
+            <a class="btn-ghost" href="/#updates">查看今日更新</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <svg viewBox="0 0 420 260" role="presentation">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f0b429" stop-opacity=".95"/>
+                <stop offset="1" stop-color="#e8543f" stop-opacity=".9"/>
+              </linearGradient>
+            </defs>
+            <rect x="10" y="34" width="120" height="168" rx="8" fill="#39415f"/>
+            <rect x="24" y="50" width="92" height="52" rx="4" fill="#4f9e8f" opacity=".8"/>
+            <rect x="24" y="112" width="92" height="10" rx="3" fill="#6b7391"/>
+            <rect x="24" y="128" width="68" height="10" rx="3" fill="#6b7391"/>
+            <rect x="24" y="144" width="80" height="10" rx="3" fill="#6b7391"/>
+            <rect x="148" y="16" width="150" height="204" rx="10" fill="url(#g1)"/>
+            <circle cx="223" cy="86" r="26" fill="#1c2340" opacity=".55"/>
+            <path d="M215 74 L215 98 L236 86 Z" fill="#f6f3ec"/>
+            <rect x="168" y="132" width="110" height="10" rx="4" fill="#1c2340" opacity=".5"/>
+            <rect x="168" y="150" width="82" height="10" rx="4" fill="#1c2340" opacity=".38"/>
+            <rect x="168" y="176" width="52" height="18" rx="4" fill="#1c2340" opacity=".7"/>
+            <rect x="316" y="52" width="94" height="66" rx="6" fill="#39415f"/>
+            <rect x="326" y="62" width="74" height="46" rx="3" fill="#4f9e8f" opacity=".65"/>
+            <rect x="316" y="130" width="94" height="66" rx="6" fill="#39415f"/>
+            <rect x="326" y="140" width="74" height="46" rx="3" fill="#b8801a" opacity=".7"/>
+            <line x1="10" y1="222" x2="410" y2="222" stroke="#f0b429" stroke-opacity=".45" stroke-width="2"/>
+            <circle cx="52" cy="222" r="4" fill="#f0b429"/>
+            <circle cx="164" cy="222" r="4" fill="#e8543f"/>
+            <circle cx="288" cy="222" r="4" fill="#4f9e8f"/>
+            <circle cx="390" cy="222" r="4" fill="#f0b429"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <div class="layout">
+
+      <!-- 左频道 -->
+      <aside class="chan" aria-labelledby="chan-title">
+        <h2 id="chan-title">频道索引</h2>
+        <nav aria-label="片库频道">
+          <a href="/#overview">片库概览</a>
+          <a href="/#picks">精选片单</a>
+          <a href="/#updates">更新动态</a>
+          <a href="/#cats">分类入口</a>
+          <a href="/#deep">深度解析</a>
+          <a href="/#guide">选片路径</a>
+          <a href="/#faq">常见问答</a>
+          <a href="/#comments">观众评论</a>
+          <a href="/#news">片库资讯</a>
+          <a href="/#related">相关推荐</a>
+          <a href="/#rank">热度榜单</a>
+        </nav>
+      </aside>
+
+      <!-- 主内容 -->
+      <div class="main-col">
+
+        <!-- 1 概览 -->
+        <section class="block" id="overview">
+          <div class="block-head">
+            <h2>片库概览：五大类型与片源状态</h2>
+            <span class="h2-note">2026 年 11 月 8 日整理</span>
+          </div>
+          <div class="overview-text">
+            <p>影视片库通常按类型、产地、年份和片源状态四条线组织。类型决定观看预期：悬疑剧看解谜密度与线索回收，犯罪片看动机铺陈与场面调度，番剧看单集节奏与制作水准，纪录片看拍摄周期与田野深度，修复片看画质还原与音轨重制版本。</p>
+            <p>产地线影响更新节奏。华语剧集多采用周更三到四集的排播方式，欧美剧常按季整批入库，日韩番剧以周更单集为主，纪录片则更依赖节展首映后分批上线。年份线用于区分新片与旧片，2015 年之前的作品更多以修复版或高清重制形式出现。</p>
+            <p>片源状态是片库条目里最容易被忽略的一项。同一部作品可能同时存在标清、1080P、4K 修复三种版本，字幕则有内嵌、外挂、双语压制之分。看片前确认版本信息，比纠结评分更能减少中途换源的麻烦。当前值得关注的几个方向包括：华语悬疑剧的短剧化趋势、欧美犯罪片对真实案件改编的收紧、番剧单集时长向 24 分钟回归、自然纪录片的高帧率拍摄普及，以及 1990 年代港片的 4K 修复进度。</p>
+          </div>
+        </section>
+
+        <!-- 2 精选 -->
+        <section class="block" id="picks">
+          <div class="block-head">
+            <h2>精选片单：12 个可查条目</h2>
+            <span class="h2-note">按类型与评分挑选</span>
+          </div>
+          <p class="section-lead">覆盖悬疑、犯罪、番剧、纪录片与修复片五个方向，附类型标签与当前状态。</p>
+          <div class="card-grid" id="cardGrid">
+
+            <article class="card" data-name="雾港档案 华语悬疑剧">
+              <img src="https://picsum.photos/seed/wugang-dangan11/400/300" width="400" height="300" loading="lazy" alt="雾港档案悬疑剧集封面">
+              <div class="card-body">
+                <span class="card-type">华语悬疑剧</span>
+                <h3>雾港档案</h3>
+                <p class="desc">以港口旧案卷宗为线索的双线叙事，前八集铺陈三起关联失踪案，线索回收集中在第 14 与 20 集，适合喜欢慢热推理的观众。</p>
+                <div class="card-tags"><span>双线叙事</span><span>卷宗推理</span><span>24 集</span></div>
+                <div class="card-meta"><span>全 24 集已入库</span><span class="score">8.6</span></div>
+              </div>
+            </article>
+
+            <article class="card" data-name="第七号证人 欧美犯罪片">
+              <img src="https://picsum.photos/seed/diqihao-zhengren22/400/300" width="400" height="300" loading="lazy" alt="第七号证人欧美犯罪电影剧照">
+              <div class="card-body">
+                <span class="card-type t-red">欧美犯罪片</span>
+                <h3>第七号证人</h3>
+                <p class="desc">庭审倒叙结构，全片七次视角切换，每次切换推翻一条既定证词。看点在庭审现场的台词密度与最后二十分钟的动机反转。</p>
+                <div class="card-tags"><span>庭审</span><span>倒叙</span><span>132 分钟</span></div>
+                <div class="card-meta"><span>1080P 双语字幕</span><span class="score">8.2</span></div>
+              </div>
+            </article>
+
+            <article class="card" data-name="星轨列车 日韩番剧">
+              <img src="https://picsum.photos/seed/xinggui-lieche33/400/300" width="400" height="300" loading="lazy" alt="星轨列车番剧主视觉">
+              <div class="card-body">
+                <span class="card-type t-teal">日韩番剧</span>
+                <h3>星轨列车</h3>
+                <p class="desc">单集 24 分钟的科幻番，以夜行列车为舞台串联十二个乘客故事。第 6 集起进入主线，作画水准在动作段落明显提升。</p>
+                <div class="card-tags"><span>科幻</span><span>单元剧</span><span>周更</span></div>
+                <div class="card-meta"><span>更新至第 6 集</span><span class="score">8.9</span></div>
+              </div>
+            </article>
+
+            <article class="card" data-name="潮间带 自然纪录片">
+              <img src="https://picsum.photos/seed/chaojiandai44/400/300" width="400" height="300" loading="lazy" alt="潮间带自然纪录片海岸画面">
+              <div class="card-body">
+                <span class="card-type t-teal">自然纪录片</span>
+                <h3>潮间带</h3>
+                <p class="desc">历时两年拍摄的潮间带生态纪录，四集分别对应四季潮汐。第 3 集采用 60 帧拍摄藤壶开合，是全片技术亮点。</p>
+                <div class="card-tags"><span>生态</span><span>四季</span><span>4 集</span></div>
+                <div class="card-meta"><span>4K 版本已上架</span><span class="score">9.1</span></div>
+              </div>
+            </article>
+
+            <article class="card" data-name="暗河 华语悬疑剧">
+              <img src="https://picsum.photos/seed/anhe-drama55/400/300" width="400" height="300" loading="lazy" alt="暗河悬疑剧剧照">
+              <div class="card-body">
+                <span class="card-type">华语悬疑剧</span>
+                <h3>暗河</h3>
+                <p class="desc">十二集短剧，围绕地下管网施工发现的旧案展开。每集长度 40 分钟上下，叙事不设旁白，靠环境音与镜头交代信息。</p>
+                <div class="card-tags"><span>短剧</span><span>冷色调</span><span>12 集</span></div>
+                <div class="card-meta"><span>全 12 集已入库</span><span class="score">8.4</span></div>
+              </div>
+            </article>
+
+            <article class="card" data-name="北纬四十度 公路电影">
+              <img src="https://picsum.photos/seed/beiwei-sishi66/400/300" width="400" height="300" loading="lazy" alt="北纬四十度公路电影画面">
+              <div class="card-body">
+                <span class="card-type t-red">公路电影</span>
+                <h3>北纬四十度</h3>
+                <p class="desc">沿北纬四十度横穿三省的公路片，主角是一辆改装面包车与两位临时搭伙的陌生人。摄影以固定长镜为主，音乐克制。</p>
+                <div class="card-tags"><span>公路</span><span>长镜</span><span>118 分钟</span></div>
+                <div class="card-meta"><span>1080P 内嵌字幕</span><span class="score">7.8</span></div>
+              </div>
+            </article>
+
+            <article class="card" data-name="纸鸢计划 谍战剧">
+              <img src="https://picsum.photos/seed/zhiyuan-jihua77/400/300" width="400" height="300" loading="lazy" alt="纸鸢计划谍战剧剧照">
+              <div class="card-body">
+                <span class="card-type">谍战剧</span>
+                <h3>纸鸢计划</h3>
+                <p class="desc">以电报密码为线索的谍战剧，全剧出现三种加密方式。第 10 集密电破译段落是理解后续人物关系的关键节点。</p>
+                <div class="card-tags"><span>谍战</span><span>密码</span><span>32 集</span></div>
+                <div class="card-meta"><span>更新至第 26 集</span><span class="score">8.0</span></div>
+              </div>
+            </article>
+
+            <article class="card" data-name="旧城十三巷 4K修复">
+              <img src="https://picsum.photos/seed/jiucheng-shisan88/400/300" width="400" height="300" loading="lazy" alt="旧城十三巷修复版画面">
+              <div class="card-body">
+                <span class="card-type t-teal">4K 修复</span>
+                <h3>旧城十三巷</h3>
+                <p class="desc">1994 年港产片 4K 修复版，原始胶片扫描后重调色，保留颗粒感。新增粤语原声轨与重新翻译的字幕，对比旧版可看出夜景细节差异。</p>
+                <div class="card-tags"><span>港片</span><span>胶片扫描</span><span>粤语原声</span></div>
+                <div class="card-meta"><span>4K 修复版</span><span class="score">8.7</span></div>
+              </div>
+            </article>
+
+            <article class="card" data-name="雪线以上 登山纪录片">
+              <img src="https://picsum.photos/seed/xuexian-yishang99/400/300" width="400" height="300" loading="lazy" alt="雪线以上登山纪录片画面">
+              <div class="card-body">
+                <span class="card-type t-teal">纪录片</span>
+                <h3>雪线以上</h3>
+                <p class="desc">记录三支登山队在同一季节攀登不同山峰的过程，重点不在登顶而在营地生活与高原适应。第 2 集的高原病症段落信息量最大。</p>
+                <div class="card-tags"><span>登山</span><span>高原</span><span>6 集</span></div>
+                <div class="card-meta"><span>全 6 集已入库</span><span class="score">8.5</span></div>
+              </div>
+            </article>
+
+            <article class="card" data-name="慢速城市 都市剧">
+              <img src="https://picsum.photos/seed/mansu-chengshi10/400/300" width="400" height="300" loading="lazy" alt="慢速城市都市剧剧照">
+              <div class="card-body">
+                <span class="card-type">都市剧</span>
+                <h3>慢速城市</h3>
+                <p class="desc">以社区食堂为中心的群像剧，二十四集里出现十七位常驻角色。节奏偏慢，适合配饭观看，第 9 集的夜班段落是转折点。</p>
+                <div class="card-tags"><span>群像</span><span>生活流</span><span>24 集</span></div>
+                <div class="card-meta"><span>更新至第 17 集</span><span class="score">7.6</span></div>
+              </div>
+            </article>
+
+            <article class="card" data-name="回声实验 科幻电影">
+              <img src="https://picsum.photos/seed/huisheng-shiyan11/400/300" width="400" height="300" loading="lazy" alt="回声实验科幻电影画面">
+              <div class="card-body">
+                <span class="card-type t-red">科幻电影</span>
+                <h3>回声实验</h3>
+                <p class="desc">小成本科幻，全片九成场景在一间声学实验室完成。概念围绕声音记忆展开，适合喜欢封闭空间叙事与概念设定的观众。</p>
+                <div class="card-tags"><span>封闭空间</span><span>概念科幻</span><span>96 分钟</span></div>
+                <div class="card-meta"><span>1080P 外挂字幕</span><span class="score">7.9</span></div>
+              </div>
+            </article>
+
+            <article class="card" data-name="三月邮差 日韩番剧">
+              <img src="https://picsum.photos/seed/sanyue-youchai12/400/300" width="400" height="300" loading="lazy" alt="三月邮差番剧主视觉">
+              <div class="card-body">
+                <span class="card-type t-teal">日韩番剧</span>
+                <h3>三月邮差</h3>
+                <p class="desc">治愈系番剧，一集一封信的结构，单集 24 分钟。第 4 集之后开始回收前几封信的伏笔，适合按顺序看不跳集。</p>
+                <div class="card-tags"><span>治愈</span><span>书信</span><span>12 集</span></div>
+                <div class="card-meta"><span>全 12 集已入库</span><span class="score">8.3</span></div>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- 3 更新动态 -->
+        <section class="block" id="updates">
+          <div class="block-head">
+            <h2>更新动态：11 月 8 日前后的入库记录</h2>
+          </div>
+          <div class="panel-box">
+            <ul class="update-list">
+              <li><span class="u-time">今天 09:30</span><span><span class="u-title">雾港档案</span> <span class="u-desc">全 24 集入库，含 1080P 与 4K 两个版本</span></span></li>
+              <li><span class="u-time">今天 08:10</span><span><span class="u-title">星轨列车</span> <span class="u-desc">第 6 集上线，主线正式展开</span></span></li>
+              <li><span class="u-time">昨天 21:40</span><span><span class="u-title">纸鸢计划</span> <span class="u-desc">第 26 集更新，密电破译线索推进</span></span></li>
+              <li><span class="u-time">昨天 18:05</span><span><span class="u-title">三月邮差</span> <span class="u-desc">全 12 集补齐外挂字幕版本</span></span></li>
+              <li><span class="u-time">11 月 6 日</span><span><span class="u-title">旧城十三巷</span> <span class="u-desc">4K 修复版完成调色，新增粤语原声轨</span></span></li>
+              <li><span class="u-time">11 月 5 日</span><span><span class="u-title">潮间带</span> <span class="u-desc">第 4 集冬季潮汐篇上线，60 帧版本可选</span></span></li>
+              <li><span class="u-time">11 月 4 日</span><span><span class="u-title">第七号证人</span> <span class="u-desc">替换为双语字幕压制版，修正三处时间轴</span></span></li>
+              <li><span class="u-time">11 月 3 日</span><span><span class="u-title">暗河</span> <span class="u-desc">第 12 集大结局入库，短剧全片完结</span></span></li>
+              <li><span class="u-time">11 月 2 日</span><span><span class="u-title">雪线以上</span> <span class="u-desc">第 5 集更新，新增拍摄手记音轨</span></span></li>
+              <li><span class="u-time">10 月 31 日</span><span><span class="u-title">慢速城市</span> <span class="u-desc">第 17 集更新，夜班段落播出</span></span></li>
+              <li><span class="u-time">10 月 29 日</span><span><span class="u-title">回声实验</span> <span class="u-desc">补入导演评论字幕，时长 42 分钟</span></span></li>
+              <li><span class="u-time">10 月 27 日</span><span><span class="u-title">北纬四十度</span> <span class="u-desc">新增 118 分钟公映版与 132 分钟导演剪辑版</span></span></li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 4 分类入口 -->
+        <section class="block" id="cats">
+          <div class="block-head">
+            <h2>分类入口：按类型找片</h2>
+          </div>
+          <div class="cat-grid">
+            <a class="cat-item" href="/#picks"><strong>悬疑推理</strong><small>卷宗、双线、慢热推理</small></a>
+            <a class="cat-item" href="/#picks"><strong>犯罪庭审</strong><small>倒叙、证词、动机反转</small></a>
+            <a class="cat-item" href="/#picks"><strong>华语剧集</strong><small>周更排播、短剧化</small></a>
+            <a class="cat-item" href="/#picks"><strong>日韩番剧</strong><small>周更单集、24 分钟</small></a>
+            <a class="cat-item" href="/#picks"><strong>自然纪录片</strong><small>生态、四季、高帧率</small></a>
+            <a class="cat-item" href="/#picks"><strong>公路电影</strong><small>长镜、旅途、群像</small></a>
+            <a class="cat-item" href="/#picks"><strong>4K 修复</strong><small>胶片扫描、原声重制</small></a>
+            <a class="cat-item" href="/#picks"><strong>概念科幻</strong><small>封闭空间、设定驱动</small></a>
+          </div>
+        </section>
+
+        <!-- 5 深度解析 -->
+        <section class="block" id="deep">
+          <div class="block-head">
+            <h2>深度解析：类型差异与版本判断</h2>
+          </div>
+          <div class="deep">
+            <h3>悬疑剧与犯罪片的判断维度不同</h3>
+            <p>悬疑剧的核心是信息控制：观众在什么时间点获得哪条线索，决定了观看体验。判断一部悬疑剧是否值得投入，可以看前两集是否给出至少两条可回收的伏笔，以及线索是否靠人物行动推进而不是靠旁白解释。《雾港档案》前八集铺陈三起失踪案，第 14 与 20 集才集中回收，属于慢热型；《暗河》则每集结尾留一个具体问题，节奏更快，适合连续观看。</p>
+            <p>犯罪片更看重动机铺陈与场面调度。《第七号证人》用七次视角切换推翻证词，看点是庭审现场的台词密度，而不是追逐场面。这类作品如果开场十分钟内没有建立清晰的利益关系，中途容易失去注意力。</p>
+
+            <h3>番剧单集时长与叙事结构的关系</h3>
+            <p>24 分钟单集是番剧的常见规格，它决定了叙事必须在小段落内完成起承转合。《星轨列车》以单元剧方式串联乘客故事，第 6 集起转入主线；《三月邮差》一集一封信，第 4 集之后开始回收伏笔。两部的共同点是单集信息量可控，适合按周追看，不适合一次性刷完，否则伏笔密度会显得重复。</p>
+
+            <h3>纪录片看拍摄周期与田野深度</h3>
+            <p>自然纪录片的可信度很大程度取决于拍摄周期。《潮间带》历时两年，四集对应四季潮汐，第 3 集用 60 帧拍摄藤壶开合，这种技术选择直接服务于观察目的。《雪线以上》把重点放在营地生活与高原适应，而不是登顶瞬间，信息密度集中在前三集。判断一部纪录片是否值得看，先看它是否说明了拍摄时间跨度与拍摄地点，再看是否提供了可验证的观察细节。</p>
+
+            <h3>修复片要区分修复程度与版本</h3>
+            <p>修复片的关键不是“有没有 4K”，而是修复流程。《旧城十三巷》采用原始胶片扫描后重调色，保留颗粒感，并新增粤语原声轨与重新翻译的字幕。对比旧版，夜景细节差异最明显。常见的修复程度可以这样区分：</p>
+            <table class="compare-table">
+              <thead>
+                <tr><th>修复类型</th><th>常见来源</th><th>判断依据</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>数字重制</td><td>旧数字母带</td><td>画质提升有限，色调可能有偏移</td></tr>
+                <tr><td>胶片扫描修复</td><td>原始底片或拷贝</td><td>保留颗粒，暗部细节可辨</td></tr>
+                <tr><td>4K 重扫重调</td><td>底片高分辨率扫描</td><td>附带修复说明与音轨重制信息</td></tr>
+              </tbody>
+            </table>
+            <p>看到“4K 修复”字样时，可以先确认是否附带修复说明、是否重制音轨、字幕是否重新翻译。三项齐全的版本，通常比单纯放大分辨率的版本更值得替换。</p>
+
+            <h3>片源状态比评分更影响观看体验</h3>
+            <p>同一部作品可能存在标清、1080P、4K 三种片源，字幕也有内嵌、外挂、双语压制之分。外挂字幕便于调整时间轴，内嵌字幕则省去匹配步骤。看片前确认版本，比纠结评分更能减少中途换源的麻烦。对于长剧集，建议先确认整季是否已完整入库，再决定是否开始；对于番剧，确认更新频率是否稳定，比确认单集评分更有意义。</p>
+          </div>
+        </section>
+
+        <!-- 6 体验路径 -->
+        <section class="block" id="guide">
+          <div class="block-head">
+            <h2>选片路径：从类型到具体条目</h2>
+          </div>
+          <p class="section-lead">按观看目的排序，而不是按评分排序，能更快找到合适的条目。</p>
+          <div class="steps">
+            <div class="step">
+              <span class="num">1</span>
+              <h3>先定观看场景</h3>
+              <p>配饭看选单集 24 分钟的番剧或生活流都市剧；专注看选庭审、悬疑或纪录片。场景决定单集时长与信息密度。</p>
+            </div>
+            <div class="step">
+              <span class="num">2</span>
+              <h3>再定类型预期</h3>
+              <p>想要解谜选悬疑剧，想要动机反转选犯罪片，想要观察细节选纪录片。类型预期错位是弃剧最常见的原因。</p>
+            </div>
+            <div class="step">
+              <span class="num">3</span>
+              <h3>确认片源与更新状态</h3>
+              <p>长剧先看整季是否完整入库，番剧先看更新是否稳定，修复片先看是否附带修复说明与重制音轨。</p>
+            </div>
+            <div class="step">
+              <span class="num">4</span>
+              <h3>用前两集做判断</h3>
+              <p>悬疑剧看前两集是否给出可回收伏笔，犯罪片看开场十分钟是否建立利益关系，纪录片看是否说明拍摄周期与地点。</p>
+            </div>
+            <div class="step">
+              <span class="num">5</span>
+              <h3>类似条目横向比较</h3>
+              <p>同为短剧，《暗河》十二集、《雾港档案》二十四集，前者节奏更紧。同为番剧，单元剧与连续剧的追看方式不同。</p>
+            </div>
+            <div class="step">
+              <span class="num">6</span>
+              <h3>记录版本再决定替换</h3>
+              <p>已看过的旧片，若出现胶片扫描修复版且附带原声轨，可以替换；仅分辨率放大的版本，替换收益有限。</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7 FAQ -->
+        <section class="block" id="faq">
+          <div class="block-head">
+            <h2>常见问答</h2>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>华语悬疑剧一般多久更新一次？</summary>
+              <p>常见的排播是每周更新三到四集，短剧则可能一次性放出全集。《雾港档案》属于整季入库型，《纸鸢计划》属于周更型，每周更新两集。追更前先确认是整季上线还是分批更新，能避免反复刷新。</p>
+            </details>
+            <details>
+              <summary>悬疑剧和犯罪片有什么区别？</summary>
+              <p>悬疑剧的核心是信息控制，观众跟着线索逐步接近真相；犯罪片的核心是动机与场面，重点在人物为什么这么做、现场如何调度。《暗河》偏前者，《第七号证人》偏后者，两者可以重叠，但观看预期不同。</p>
+            </details>
+            <details>
+              <summary>第一次接触番剧，从哪个条目开始看比较好？</summary>
+              <p>如果习惯单集独立故事，可以从《星轨列车》前五集入手，单元结构不依赖前情；如果偏好连续伏笔，从《三月邮差》第 1 集按顺序看，第 4 集之后伏笔开始回收，跳集会损失信息。</p>
+            </details>
+            <details>
+              <summary>4K 修复版和普通高清版差别在哪？</summary>
+              <p>差别主要在修复流程。胶片扫描修复保留颗粒与暗部细节，4K 重扫重调通常附带修复说明与音轨重制。仅把旧母带放大到 4K 的版本，画质提升有限，夜景与快速运动段落容易出现涂抹感。</p>
+            </details>
+            <details>
+              <summary>自然纪录片的评判标准通常是什么？</summary>
+              <p>主要看拍摄周期、拍摄地点与观察细节是否可验证。《潮间带》用两年四季对应潮汐变化，《雪线以上》记录营地生活与高原适应，都提供了具体的时间跨度与场景信息。缺少这些信息的纪录片，容易流于风光集锦。</p>
+            </details>
+            <details>
+              <summary>同一部片子有多个版本，应该怎么选？</summary>
+              <p>先看是否附带修复说明与音轨重制，再看字幕是内嵌还是外挂。需要调整时间轴选中外挂字幕，追求省事选内嵌双语压制。长剧集还要确认整季是否同一版本，混版会导致画质与字幕风格不一致。</p>
+            </details>
+          </div>
+        </section>
+
+        <!-- 8 评论 -->
+        <section class="block" id="comments">
+          <div class="block-head">
+            <h2>观众评论：16 条</h2>
+          </div>
+          <div class="comment-grid">
+            <div class="comment"><div class="who">夜航船</div><div class="txt">《雾港档案》第 14 集那条线索回收得挺稳，前面八集的铺垫没白等。</div><div class="when">今天 10:12</div></div>
+            <div class="comment"><div class="who">榛子拿铁</div><div class="txt">《星轨列车》第 6 集作画明显上了一个档次，动作段落值得单独回看。</div><div class="when">今天 09:48</div></div>
+            <div class="comment"><div class="who">旧书页</div><div class="txt">《第七号证人》庭审台词太密，我中途暂停了两次才跟上证词变化。</div><div class="when">今天 08:55</div></div>
+            <div class="comment"><div class="who">潮汐观测员</div><div class="txt">《潮间带》第 3 集 60 帧版本确实不一样，藤壶开合看得很清楚。</div><div class="when">昨天 22:30</div></div>
+            <div class="comment"><div class="who">半页笔记</div><div class="txt">《暗河》十二集刚好，不拖。冷色调看久了有点累，但氛围是对的。</div><div class="when">昨天 21:05</div></div>
+            <div class="comment"><div class="who">山道骑行</div><div class="txt">《雪线以上》重点在营地生活这点我认同，登顶镜头反而没那么多。</div><div class="when">昨天 19:40</div></div>
+            <div class="comment"><div class="who">胶片颗粒</div><div class="txt">《旧城十三巷》修复版夜景细节提升明显，粤语原声加分。</div><div class="when">昨天 17:20</div></div>
+            <div class="comment"><div class="who">慢速通勤</div><div class="txt">《慢速城市》适合配饭，第 9 集夜班段落之后人物关系清楚多了。</div><div class="when">11 月 7 日</div></div>
+            <div class="comment"><div class="who">纸鸢线</div><div class="txt">《纸鸢计划》第 26 集密电那段信息量有点大，建议慢放看。</div><div class="when">11 月 7 日</div></div>
+            <div class="comment"><div class="who">回声室</div><div class="txt">《回声实验》概念不错，九成场景在一间实验室，但结尾解释略仓促。</div><div class="when">11 月 6 日</div></div>
+            <div class="comment"><div class="who">三月信使</div><div class="txt">《三月邮差》第 4 集之后伏笔回收得很自然，适合按顺序看。</div><div class="when">11 月 6 日</div></div>
+            <div class="comment"><div class="who">北纬旅人</div><div class="txt">《北纬四十度》导演剪辑版多出的十四分钟主要补了配角背景，公映版也够看。</div><div class="when">11 月 5 日</div></div>
+            <div class="comment"><div class="who">卷宗编号</div><div class="txt">《雾港档案》4K 版本比 1080P 在港口夜戏上差别明显，白天场景差别一般。</div><div class="when">11 月 5 日</div></div>
+            <div class="comment"><div class="who">番剧周记</div><div class="txt">《星轨列车》单元剧结构挺友好，前五集随便挑一集都能看进去。</div><div class="when">11 月 4 日</div></div>
+            <div class="comment"><div class="who">暗房红灯</div><div class="txt">《第七号证人》双语字幕压制版比旧版时间轴准，之前几处错位修好了。</div><div class="when">11 月 4 日</div></div>
+            <div class="comment"><div class="who">冬季潮汐</div><div class="txt">《潮间带》第 4 集冬季篇节奏偏慢，但观察细节比前三集更多。</div><div class="when">11 月 3 日</div></div>
+          </div>
+        </section>
+
+        <!-- 9 资讯 -->
+        <section class="block" id="news">
+          <div class="block-head">
+            <h2>片库资讯</h2>
+          </div>
+          <div class="news-grid">
+            <article class="news-item">
+              <img src="https://picsum.photos/seed/news-wugang13/600/400" width="600" height="400" loading="lazy" alt="雾港档案全季入库资讯配图">
+              <div>
+                <h3>《雾港档案》全 24 集整季入库</h3>
+                <div class="date">2026-11-08</div>
+                <p>1080P 与 4K 两个版本同时上架，4K 版本附带港口夜戏的暗部细节说明，双语字幕重新校对。</p>
+              </div>
+            </article>
+            <article class="news-item">
+              <img src="https://picsum.photos/seed/news-xinggui14/600/400" width="600" height="400" loading="lazy" alt="星轨列车第6集更新资讯配图">
+              <div>
+                <h3>《星轨列车》第 6 集转入主线</h3>
+                <div class="date">2026-11-08</div>
+                <p>单元剧结构从本集开始收束，前五集乘客故事中的两条线索被重新提起，作画水准同步提升。</p>
+              </div>
+            </article>
+            <article class="news-item">
+              <img src="https://picsum.photos/seed/news-jiucheng15/600/400" width="600" height="400" loading="lazy" alt="旧城十三巷修复调色完成资讯配图">
+              <div>
+                <h3>《旧城十三巷》4K 修复调色完成</h3>
+                <div class="date">2026-11-06</div>
+                <p>原始胶片扫描后重调色，保留颗粒感，新增粤语原声轨与重新翻译的字幕，夜景细节对比旧版差异明显。</p>
+              </div>
+            </article>
+            <article class="news-item">
+              <img src="https://picsum.photos/seed/news-chaojian16/600/400" width="600" height="400" loading="lazy" alt="潮间带冬季篇上线资讯配图">
+              <div>
+                <h3>《潮间带》冬季潮汐篇上线</h3>
+                <div class="date">2026-11-05</div>
+                <p>第 4 集提供 60 帧版本，拍摄周期跨两年，四季对应结构完整，适合按季节顺序观看。</p>
+              </div>
+            </article>
+            <article class="news-item">
+              <img src="https://picsum.photos/seed/news-anhe17/600/400" width="600" height="400" loading="lazy" alt="暗河大结局入库资讯配图">
+              <div>
+                <h3>《暗河》第 12 集大结局入库</h3>
+                <div class="date">2026-11-03</div>
+                <p>十二集短剧完结，全片不设旁白，靠环境音与镜头交代信息，冷色调摄影贯穿全剧。</p>
+              </div>
+            </article>
+            <article class="news-item">
+              <img src="https://picsum.photos/seed/news-beiwei18/600/400" width="600" height="400" loading="lazy" alt="北纬四十度双版本上架资讯配图">
+              <div>
+                <h3>《北纬四十度》双版本同时上架</h3>
+                <div class="date">2026-10-27</div>
+                <p>118 分钟公映版与 132 分钟导演剪辑版可选，后者补入配角背景段落，固定长镜数量不变。</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 10 相关推荐 -->
+        <section class="block" id="related">
+          <div class="block-head">
+            <h2>相关推荐：延伸方向</h2>
+          </div>
+          <div class="rel-tags">
+            <a href="/#picks">卷宗推理剧</a>
+            <a href="/#picks">庭审倒叙片</a>
+            <a href="/#picks">单元结构番剧</a>
+            <a href="/#picks">四季生态纪录</a>
+            <a href="/#picks">公路长镜电影</a>
+            <a href="/#picks">胶片扫描修复</a>
+            <a href="/#picks">封闭空间科幻</a>
+            <a href="/#picks">谍战密码题材</a>
+          </div>
+        </section>
+
+        <!-- 11 榜单 -->
+        <section class="block" id="rank">
+          <div class="block-head">
+            <h2>热度榜单：11 月 8 日片库检索排行</h2>
+          </div>
+          <div class="panel-box">
+            <ol class="rank-list">
+              <li><span class="rk"></span><span><span class="r-name">雾港档案</span><br><span class="r-sub">华语悬疑剧 · 全 24 集</span></span><span class="r-val">8.6</span></li>
+              <li><span class="rk"></span><span><span class="r-name">星轨列车</span><br><span class="r-sub">日韩番剧 · 更新至第 6 集</span></span><span class="r-val">8.9</span></li>
+              <li><span class="rk"></span><span><span class="r-name">潮间带</span><br><span class="r-sub">自然纪录片 · 4 集</span></span><span class="r-val">9.1</span></li>
+              <li><span class="rk"></span><span><span class="r-name">旧城十三巷</span><br><span class="r-sub">4K 修复 · 粤语原声</span></span><span class="r-val">8.7</span></li>
+              <li><span class="rk"></span><span><span class="r-name">第七号证人</span><br><span class="r-sub">欧美犯罪片 · 132 分钟</span></span><span class="r-val">8.2</span></li>
+              <li><span class="rk"></span><span><span class="r-name">暗河</span><br><span class="r-sub">华语悬疑剧 · 12 集</span></span><span class="r-val">8.4</span></li>
+              <li><span class="rk"></span><span><span class="r-name">雪线以上</span><br><span class="r-sub">登山纪录片 · 6 集</span></span><span class="r-val">8.5</span></li>
+              <li><span class="rk"></span><span><span class="r-name">三月邮差</span><br><span class="r-sub">日韩番剧 · 12 集</span></span><span class="r-val">8.3</span></li>
+            </ol>
+          </div>
+        </section>
+
+        <div class="no-result" id="noResult">没有找到匹配的条目，换个条目名或类型词试试，例如“悬疑”“番剧”“修复”。</div>
+
+      </div><!-- /main-col -->
+
+      <!-- 侧栏 -->
+      <aside class="side" aria-label="辅助信息">
+        <div class="side-box">
+          <h2>今日片源状态</h2>
+          <ul class="side-list">
+            <li><span class="s-name">雾港档案</span><br><span class="s-meta">1080P / 4K 双版本</span></li>
+            <li><span class="s-name">星轨列车</span><br><span class="s-meta">第 6 集，周更稳定</span></li>
+            <li><span class="s-name">旧城十三巷</span><br><span class="s-meta">4K 修复，粤语原声</span></li>
+            <li><span class="s-name">潮间带</span><br><span class="s-meta">60 帧版本可选</span></li>
+            <li><span class="s-name">北纬四十度</span><br><span class="s-meta">公映 / 导演剪辑双版</span></li>
+          </ul>
+        </div>
+        <div class="side-box">
+          <h2>入库时间线</h2>
+          <ul class="mini-timeline">
+            <li><span class="t">11-08</span><br>雾港档案整季入库</li>
+            <li><span class="t">11-08</span><br>星轨列车第 6 集</li>
+            <li><span class="t">11-06</span><br>旧城十三巷修复调色</li>
+            <li><span class="t">11-05</span><br>潮间带冬季篇</li>
+            <li><span class="t">11-03</span><br>暗河大结局</li>
+            <li><span class="t">10-27</span><br>北纬四十度双版本</li>
+          </ul>
+        </div>
+        <div class="side-box">
+          <h2>类型速查</h2>
+          <ul class="side-list">
+            <li><a href="/#picks"><span class="s-name">悬疑推理</span></a><br><span class="s-meta">卷宗、双线、慢热</span></li>
+            <li><a href="/#picks"><span class="s-name">犯罪庭审</span></a><br><span class="s-meta">倒叙、证词、反转</span></li>
+            <li><a href="/#picks"><span class="s-name">日韩番剧</span></a><br><span class="s-meta">单元剧、连续剧</span></li>
+            <li><a href="/#picks"><span class="s-name">自然纪录片</span></a><br><span class="s-meta">生态、四季、高帧率</span></li>
+            <li><a href="/#picks"><span class="s-name">4K 修复</span></a><br><span class="s-meta">胶片扫描、原声重制</span></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+  </div><!-- /wrap -->
+</main>
+
+<footer class="site-foot">
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="bt">库片网官网</div>
+        <p>按类型、年份与片源状态整理的影视片库索引，覆盖剧集、电影、番剧、纪录片与修复片。</p>
+      </div>
+      <div class="foot-col">
+        <h3>片库频道</h3>
+        <ul>
+          <li><a href="/#overview">片库概览</a></li>
+          <li><a href="/#picks">精选片单</a></li>
+          <li><a href="/#updates">更新动态</a></li>
+          <li><a href="/#cats">分类入口</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>深度内容</h3>
+        <ul>
+          <li><a href="/#deep">类型差异解析</a></li>
+          <li><a href="/#guide">选片路径</a></li>
+          <li><a href="/#faq">常见问答</a></li>
+          <li><a href="/#rank">热度榜单</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>社区与资讯</h3>
+        <ul>
+          <li><a href="/#comments">观众评论</a></li>
+          <li><a href="/#news">片库资讯</a></li>
+          <li><a href="/#related">相关推荐</a></li>
+          <li><a href="/#top">回到顶部</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>部分内容为示例数据，仅用于展示页面结构</span>
+      <span>© 2026 库片网官网 · 片库索引示例</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('q');
+  var btn = document.getElementById('qbtn');
+  var grid = document.getElementById('cardGrid');
+  var noResult = document.getElementById('noResult');
+  var cards = grid ? Array.prototype.slice.call(grid.querySelectorAll('.card')) : [];
+
+  function runSearch(){
+    var q = (input.value || '').trim().toLowerCase();
+    if(!q){
+      cards.forEach(function(c){ c.style.display = ''; });
+      noResult.classList.remove('show');
+      return;
+    }
+    var hit = 0;
+    cards.forEach(function(c){
+      var text = (c.getAttribute('data-name') || '') + ' ' + c.textContent.toLowerCase();
+      var match = text.indexOf(q) !== -1;
+      c.style.display = match ? '' : 'none';
+      if(match) hit++;
+    });
+    noResult.classList.toggle('show', hit === 0);
+  }
+
+  if(btn){ btn.addEventListener('click', runSearch); }
+  if(input){
+    input.addEventListener('input', runSearch);
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ e.preventDefault(); runSearch(); }
+    });
+  }
+})();
+</script>
+
+</body>
+            </html>
