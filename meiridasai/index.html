@@ -1,0 +1,1293 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日大赛校园大赛 - 赛事速览与参赛指南</title>
+  <meta name="description" content="每日大赛校园大赛是校园赛事聚合平台，提供每日更新的学科竞赛、才艺比拼、体育联赛、创意设计等赛事条目与结果速递，适合在校学生和指导教师追踪赛程与备赛参考。">
+  <meta name="keywords" content="校园赛事日历,学科竞赛报名,才艺比拼赛制,体育联赛积分,创意设计赛道">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231e3a5f'/%3E%3Cpath d='M18 44V20l14 8 14-8v24' stroke='%23f5c542' stroke-width='5' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --navy: #1e3a5f;
+      --navy-deep: #142a44;
+      --gold: #f5c542;
+      --gold-soft: #fdf6e0;
+      --bg: #f4f6f9;
+      --panel: #ffffff;
+      --ink: #1d2b3a;
+      --ink-soft: #4a5b6e;
+      --muted: #7a8a9c;
+      --line: #e2e8f0;
+      --line-strong: #c9d4e0;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 2px 10px rgba(20, 42, 68, 0.07);
+      --shadow-hover: 0 6px 20px rgba(20, 42, 68, 0.12);
+      --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+      --sticky-h: 112px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--sticky-h) + 12px); }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; object-fit: cover; }
+    a { color: var(--navy); text-decoration: none; }
+    a:hover { color: var(--gold); }
+    ul, ol { list-style: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ===== 吸顶公告条 ===== */
+    .announce {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--navy-deep);
+      color: #dce6f2;
+      font-size: 13px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(245, 197, 66, 0.25);
+    }
+    .announce .wrap {
+      max-width: 1360px; margin: 0 auto; padding: 0 20px;
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .announce .tag {
+      background: var(--gold); color: var(--navy-deep);
+      font-weight: 700; font-size: 11px; padding: 1px 8px; border-radius: 4px; letter-spacing: 0.5px;
+    }
+    .announce a { color: var(--gold); font-weight: 600; }
+    .announce a:hover { text-decoration: underline; }
+
+    /* ===== 吸顶页头 ===== */
+    .site-header {
+      position: sticky; top: 33px; z-index: 99;
+      background: var(--navy);
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(20, 42, 68, 0.25);
+    }
+    .header-inner {
+      max-width: 1360px; margin: 0 auto; padding: 12px 20px;
+      display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .brand svg { width: 36px; height: 36px; }
+    .brand-text {
+      font-size: 20px; font-weight: 800; letter-spacing: 1px; color: #fff;
+    }
+    .brand-text span { color: var(--gold); }
+    .header-nav {
+      display: flex; gap: 4px; flex-wrap: wrap; flex: 1;
+    }
+    .header-nav a {
+      color: #c9d8ea; font-size: 14px; padding: 5px 10px; border-radius: 6px; white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+    }
+    .header-nav a:hover { background: rgba(255,255,255,0.1); color: var(--gold); }
+    .header-quick {
+      display: flex; gap: 8px; align-items: center; flex-shrink: 0;
+    }
+    .header-quick .q-btn {
+      background: var(--gold); color: var(--navy-deep); font-weight: 700; font-size: 13px;
+      padding: 7px 16px; border-radius: 6px; border: none;
+    }
+    .header-quick .q-btn:hover { background: #ffd95e; }
+
+    /* ===== 首屏 ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #24507d 55%, #1a3a5c 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; right: -60px; top: -60px;
+      width: 380px; height: 380px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,197,66,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; left: 10%; bottom: -80px;
+      width: 240px; height: 240px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1360px; margin: 0 auto; padding: 52px 20px 44px;
+      display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245, 197, 66, 0.15); border: 1px solid rgba(245, 197, 66, 0.4);
+      padding: 4px 14px; border-radius: 20px; font-size: 12px; color: var(--gold); font-weight: 600;
+      letter-spacing: 0.5px; margin-bottom: 16px;
+    }
+    .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 1.8s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+    h1 {
+      font-size: 38px; font-weight: 900; letter-spacing: 2px; line-height: 1.25;
+      margin-bottom: 14px;
+    }
+    h1 span { color: var(--gold); }
+    .hero-desc {
+      font-size: 15px; color: #c9d8ea; max-width: 560px; line-height: 1.8; margin-bottom: 22px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-actions .btn-primary {
+      background: var(--gold); color: var(--navy-deep); font-weight: 700; font-size: 15px;
+      padding: 10px 26px; border-radius: 8px; border: none; transition: background 0.2s;
+    }
+    .hero-actions .btn-primary:hover { background: #ffd95e; }
+    .hero-actions .btn-ghost {
+      background: transparent; color: #dce6f2; border: 1px solid rgba(255,255,255,0.35);
+      font-size: 15px; padding: 10px 26px; border-radius: 8px; transition: border 0.2s, color 0.2s;
+    }
+    .hero-actions .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-visual {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .hero-mini {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; gap: 12px;
+      backdrop-filter: blur(4px);
+    }
+    .hero-mini .ico {
+      width: 36px; height: 36px; border-radius: 8px; background: rgba(245,197,66,0.2);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .hero-mini .ico svg { width: 20px; height: 20px; }
+    .hero-mini .txt .t { font-size: 13px; font-weight: 700; color: #fff; }
+    .hero-mini .txt .s { font-size: 12px; color: #9fb4cc; }
+
+    /* ===== 三栏布局 ===== */
+    .layout-wrap {
+      max-width: 1360px; margin: 0 auto; padding: 28px 20px 48px;
+      display: grid;
+      grid-template-columns: 178px minmax(0, 1fr) 248px;
+      gap: 24px;
+      align-items: start;
+    }
+    /* 左频道索引 */
+    .channel-index {
+      position: sticky; top: calc(var(--sticky-h) + 12px);
+      background: var(--panel); border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 16px 0; overflow: hidden;
+    }
+    .channel-index h2 {
+      font-size: 14px; font-weight: 800; color: var(--navy); padding: 0 16px 10px;
+      border-bottom: 2px solid var(--gold); margin-bottom: 6px; letter-spacing: 1px;
+    }
+    .channel-index ul { display: flex; flex-direction: column; }
+    .channel-index li a {
+      display: flex; align-items: center; gap: 8px;
+      padding: 9px 16px; font-size: 13.5px; color: var(--ink-soft);
+      border-left: 3px solid transparent; transition: all 0.2s;
+    }
+    .channel-index li a:hover, .channel-index li a.active {
+      background: var(--gold-soft); color: var(--navy); border-left-color: var(--gold); font-weight: 700;
+    }
+    .channel-index li a .num {
+      margin-left: auto; font-size: 11px; color: var(--muted); background: #eef2f7;
+      padding: 0 6px; border-radius: 8px; font-weight: 600;
+    }
+    /* 主内容 */
+    .main-col { min-width: 0; }
+    /* 右辅助栏 */
+    .side-col { position: sticky; top: calc(var(--sticky-h) + 12px); display: flex; flex-direction: column; gap: 18px; }
+
+    /* 板块通用 */
+    .section {
+      background: var(--panel); border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 22px 24px; margin-bottom: 22px;
+    }
+    .section-head {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+      margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line);
+    }
+    .section-head h2 {
+      font-size: 19px; font-weight: 800; color: var(--navy); letter-spacing: 0.5px;
+      position: relative; padding-left: 14px;
+    }
+    .section-head h2::before {
+      content: ''; position: absolute; left: 0; top: 4px; bottom: 4px; width: 4px;
+      background: var(--gold); border-radius: 2px;
+    }
+    .section-head .more { font-size: 13px; color: var(--muted); white-space: nowrap; }
+    .section-head .more:hover { color: var(--gold); }
+
+    /* 主题概览 */
+    .overview-text { font-size: 14.5px; color: var(--ink-soft); line-height: 1.85; }
+    .overview-text p { margin-bottom: 10px; }
+    .overview-text strong { color: var(--navy); }
+    .overview-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .overview-tags span {
+      background: var(--gold-soft); color: var(--navy); font-size: 12.5px; font-weight: 600;
+      padding: 4px 12px; border-radius: 14px; border: 1px solid rgba(245,197,66,0.35);
+    }
+
+    /* 卡片网格 */
+    .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .card {
+      border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: hidden;
+      display: flex; flex-direction: column; transition: box-shadow 0.2s, transform 0.2s;
+      background: #fff;
+    }
+    .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+    .card-thumb { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+    .card-thumb img { width: 100%; height: 100%; }
+    .card-thumb .badge {
+      position: absolute; top: 8px; left: 8px; background: var(--navy); color: #fff;
+      font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 4px; letter-spacing: 0.5px;
+    }
+    .card-thumb .badge.gold { background: var(--gold); color: var(--navy-deep); }
+    .card-body { padding: 12px 14px 14px; display: flex; flex-direction: column; flex: 1; }
+    .card-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.4; }
+    .card-title:hover { color: var(--gold); }
+    .card-desc { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; margin-bottom: 10px; }
+    .card-foot { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--muted); }
+    .card-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+    .card-tags span {
+      background: #eef2f7; color: var(--ink-soft); padding: 1px 8px; border-radius: 10px; font-size: 11px;
+    }
+    .card-heat { color: #d97706; font-weight: 700; font-size: 12px; }
+
+    /* 更新列表 */
+    .update-list { display: flex; flex-direction: column; gap: 0; }
+    .update-item {
+      display: flex; gap: 14px; align-items: flex-start; padding: 11px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .update-item:last-child { border-bottom: none; }
+    .update-item .time {
+      flex-shrink: 0; width: 78px; font-size: 12px; color: var(--muted); font-weight: 600;
+      padding-top: 2px;
+    }
+    .update-item .body { flex: 1; min-width: 0; }
+    .update-item .body .name { font-size: 14px; font-weight: 700; color: var(--navy); }
+    .update-item .body .name:hover { color: var(--gold); }
+    .update-item .body .summary { font-size: 13px; color: var(--muted); margin-top: 1px; }
+
+    /* 分类入口 */
+    .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .cat-item {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      padding: 16px 8px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+      text-align: center; transition: all 0.2s; background: #fff;
+    }
+    .cat-item:hover { border-color: var(--gold); background: var(--gold-soft); }
+    .cat-item .cat-ico {
+      width: 40px; height: 40px; border-radius: 10px; background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cat-item .cat-ico svg { width: 22px; height: 22px; }
+    .cat-item .cat-name { font-size: 13.5px; font-weight: 700; color: var(--navy); }
+    .cat-item .cat-count { font-size: 11.5px; color: var(--muted); }
+
+    /* 深度解析 */
+    .deep-article h3 {
+      font-size: 16.5px; font-weight: 800; color: var(--navy);
+      margin: 20px 0 10px; padding-left: 10px; border-left: 3px solid var(--gold);
+    }
+    .deep-article h3:first-child { margin-top: 0; }
+    .deep-article p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.85; margin-bottom: 12px; }
+    .deep-article ul { margin: 10px 0 14px; padding-left: 4px; }
+    .deep-article ul li {
+      position: relative; padding-left: 18px; font-size: 14px; color: var(--ink-soft);
+      margin-bottom: 7px; line-height: 1.7;
+    }
+    .deep-article ul li::before {
+      content: '▸'; position: absolute; left: 0; color: var(--gold); font-weight: 700;
+    }
+    .deep-article .callout {
+      background: var(--gold-soft); border-left: 3px solid var(--gold); padding: 12px 16px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 14px; color: var(--navy);
+      margin: 14px 0; line-height: 1.75;
+    }
+
+    /* 体验指南 */
+    .step-list { display: flex; flex-direction: column; gap: 14px; }
+    .step-item {
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .step-num {
+      flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+      background: var(--navy); color: var(--gold); font-weight: 800; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-body .step-title { font-size: 14.5px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .step-body .step-desc { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 8px; }
+    .faq-list details {
+      border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: hidden;
+      background: #fafbfd;
+    }
+    .faq-list details[open] { border-color: var(--gold); background: #fffdf5; }
+    .faq-list summary {
+      padding: 12px 16px; font-size: 14.5px; font-weight: 700; color: var(--navy);
+      cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+      gap: 10px;
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after {
+      content: '＋'; font-size: 16px; color: var(--gold); font-weight: 700; flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .faq-list details[open] summary::after { content: '－'; }
+    .faq-list .faq-answer {
+      padding: 0 16px 14px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.8;
+    }
+
+    /* 评论 */
+    .comment-list { display: flex; flex-direction: column; gap: 0; }
+    .comment-item {
+      display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px dashed var(--line);
+    }
+    .comment-item:last-child { border-bottom: none; }
+    .comment-avatar {
+      flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--navy);
+      color: var(--gold); font-weight: 800; font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .comment-body { flex: 1; min-width: 0; }
+    .comment-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
+    .comment-meta .nick { font-size: 13px; font-weight: 700; color: var(--navy); }
+    .comment-meta .date { font-size: 11.5px; color: var(--muted); }
+    .comment-text { font-size: 13.5px; color: var(--ink-soft); line-height: 1.7; }
+
+    /* 相关资讯 */
+    .news-list { display: flex; flex-direction: column; gap: 14px; }
+    .news-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding-bottom: 14px; border-bottom: 1px solid var(--line);
+    }
+    .news-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .news-thumb {
+      flex-shrink: 0; width: 100px; height: 68px; border-radius: 6px; overflow: hidden;
+    }
+    .news-thumb img { width: 100%; height: 100%; }
+    .news-body { flex: 1; min-width: 0; }
+    .news-body .news-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; line-height: 1.4; }
+    .news-body .news-title:hover { color: var(--gold); }
+    .news-body .news-summary { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+    .news-body .news-date { font-size: 11.5px; color: #a0aec0; margin-top: 3px; }
+
+    /* 相关推荐 */
+    .rec-tags { display: flex; flex-wrap: wrap; gap: 9px; }
+    .rec-tags a {
+      display: inline-block; padding: 6px 14px; border-radius: 18px;
+      border: 1px solid var(--line-strong); font-size: 13px; color: var(--ink-soft);
+      background: #fff; transition: all 0.2s;
+    }
+    .rec-tags a:hover { border-color: var(--gold); color: var(--navy); background: var(--gold-soft); font-weight: 600; }
+
+    /* 排行榜 */
+    .rank-list { display: flex; flex-direction: column; gap: 0; }
+    .rank-item {
+      display: flex; align-items: center; gap: 12px; padding: 10px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .rank-item:last-child { border-bottom: none; }
+    .rank-num {
+      flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px;
+      background: #eef2f7; color: var(--ink-soft); font-weight: 800; font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .rank-num.top1 { background: var(--gold); color: var(--navy-deep); }
+    .rank-num.top2 { background: #e8eef6; color: var(--navy); }
+    .rank-num.top3 { background: #f5e6d3; color: #a16207; }
+    .rank-body { flex: 1; min-width: 0; }
+    .rank-body .rank-name { font-size: 13.5px; font-weight: 700; color: var(--navy); }
+    .rank-body .rank-sub { font-size: 11.5px; color: var(--muted); }
+    .rank-score { font-size: 13px; font-weight: 800; color: #d97706; flex-shrink: 0; }
+
+    /* 侧栏卡片 */
+    .side-card {
+      background: var(--panel); border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 16px 18px;
+    }
+    .side-card h3 {
+      font-size: 14.5px; font-weight: 800; color: var(--navy); margin-bottom: 12px;
+      padding-bottom: 8px; border-bottom: 2px solid var(--gold); letter-spacing: 0.5px;
+    }
+    .side-card .side-list { display: flex; flex-direction: column; gap: 0; }
+    .side-card .side-list li {
+      display: flex; gap: 8px; align-items: flex-start; padding: 8px 0;
+      border-bottom: 1px dashed var(--line); font-size: 13px;
+    }
+    .side-card .side-list li:last-child { border-bottom: none; }
+    .side-card .side-list li .idx {
+      flex-shrink: 0; width: 18px; height: 18px; border-radius: 4px; background: #eef2f7;
+      color: var(--ink-soft); font-size: 11px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; margin-top: 2px;
+    }
+    .side-card .side-list li .idx.hot { background: var(--gold); color: var(--navy-deep); }
+    .side-card .side-list li a { color: var(--ink-soft); font-weight: 600; line-height: 1.5; }
+    .side-card .side-list li a:hover { color: var(--gold); }
+    .side-card .side-list li .meta { font-size: 11.5px; color: var(--muted); font-weight: 400; margin-top: 1px; }
+
+    /* 页尾 */
+    .site-footer {
+      background: var(--navy-deep); color: #b8c9dc; margin-top: 20px;
+    }
+    .footer-inner {
+      max-width: 1360px; margin: 0 auto; padding: 36px 20px 24px;
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 28px;
+    }
+    .footer-brand .fb-name { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .footer-brand .fb-name span { color: var(--gold); }
+    .footer-brand .fb-desc { font-size: 13px; line-height: 1.8; color: #8fa6be; }
+    .footer-col h4 { font-size: 13.5px; font-weight: 700; color: #fff; margin-bottom: 10px; letter-spacing: 0.5px; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 6px; }
+    .footer-col ul li a { font-size: 12.5px; color: #8fa6be; }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08); padding: 14px 20px;
+      text-align: center; font-size: 12px; color: #6d829a;
+      max-width: 1360px; margin: 0 auto;
+    }
+
+    /* 响应式 */
+    @media (max-width: 1100px) {
+      .layout-wrap { grid-template-columns: 160px minmax(0, 1fr); }
+      .side-col { grid-column: 1 / -1; position: static; flex-direction: row; flex-wrap: wrap; }
+      .side-col .side-card { flex: 1; min-width: 240px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 28px; }
+      .hero-visual { flex-direction: row; flex-wrap: wrap; }
+      .hero-mini { flex: 1; min-width: 220px; }
+    }
+    @media (max-width: 1024px) {
+      .layout-wrap { grid-template-columns: minmax(0, 1fr); }
+      .channel-index { position: static; display: flex; flex-wrap: wrap; padding: 12px; gap: 4px; }
+      .channel-index h2 { width: 100%; border-bottom: none; padding: 0 4px 6px; }
+      .channel-index ul { flex-direction: row; flex-wrap: wrap; gap: 4px; width: 100%; }
+      .channel-index li a { border-left: none; border-bottom: 2px solid transparent; padding: 6px 12px; border-radius: 6px; }
+      .channel-index li a:hover, .channel-index li a.active { border-left: none; border-bottom-color: var(--gold); }
+      .channel-index li a .num { display: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 740px) {
+      :root { --sticky-h: 140px; }
+      h1 { font-size: 26px; }
+      .header-inner { gap: 10px; }
+      .header-nav { order: 3; width: 100%; }
+      .header-nav a { font-size: 12.5px; padding: 4px 8px; }
+      .hero-inner { padding: 32px 16px 28px; }
+      .hero-desc { font-size: 14px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .update-item .time { width: 62px; font-size: 11px; }
+      .news-item { flex-direction: column; gap: 8px; }
+      .news-thumb { width: 100%; height: 120px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 20px; }
+      .section { padding: 18px 16px; }
+      .layout-wrap { padding: 20px 12px 36px; }
+      .side-col { flex-direction: column; }
+      .hero-visual { flex-direction: column; }
+      .hero-mini { min-width: 0; }
+    }
+    @media (max-width: 400px) {
+      h1 { font-size: 22px; letter-spacing: 1px; }
+      .cat-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    }
+
+    /* 可访问性焦点 */
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 2px solid var(--gold); outline-offset: 2px;
+    }
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); white-space: nowrap;
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+  <!-- 吸顶公告条 -->
+  <div class="announce" role="region" aria-label="赛事更新公告">
+    <div class="wrap">
+      <span class="tag">今日更新</span>
+      <span>11 月 8 日新增 9 条赛事条目：</span>
+      <a href="#latest">全国大学生数学建模竞赛校内选拔赛结果公布</a>
+      <span>·</span>
+      <a href="#latest">校园十佳歌手复赛晋级名单出炉</a>
+    </div>
+  </div>
+
+  <!-- 吸顶页头 -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/#top" class="brand" aria-label="每日大赛校园大赛 首页">
+        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#f5c542"/>
+          <path d="M18 44V20l14 8 14-8v24" stroke="#1e3a5f" stroke-width="5" stroke-linejoin="round" fill="none"/>
+          <circle cx="32" cy="14" r="3" fill="#1e3a5f"/>
+        </svg>
+        <span class="brand-text">每日大赛<span>校园大赛</span></span>
+      </a>
+      <nav class="header-nav" aria-label="主题导航">
+        <a href="#overview">赛事速览</a>
+        <a href="#featured">精选赛程</a>
+        <a href="#latest">最新动态</a>
+        <a href="#categories">分类入口</a>
+        <a href="#deep">深度解析</a>
+        <a href="#guide">参赛指南</a>
+        <a href="#faq">常见问答</a>
+        <a href="#comments">选手评论</a>
+        <a href="#news">赛事资讯</a>
+        <a href="#ranking">热门榜单</a>
+      </nav>
+      <div class="header-quick">
+        <button class="q-btn" type="button" onclick="document.getElementById('latest').scrollIntoView({behavior:'smooth'})">查看今日更新</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 首屏 -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge"><span class="dot"></span>2026 秋季学期 · 第 11 周赛程进行中</div>
+        <h1>每日大赛校园大赛</h1>
+        <p class="hero-desc">
+          这里汇总全国高校每日进行的学科竞赛、才艺比拼、体育联赛、创意设计四大赛事方向的具体赛程与结果：数学建模、英语演讲、校园歌手、篮球联赛、短视频创作等条目每日更新，适合参赛学生、指导教师和赛事组织者追踪进度与备赛参考。
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" type="button" onclick="document.getElementById('featured').scrollIntoView({behavior:'smooth'})">浏览精选赛程</button>
+          <button class="btn-ghost" type="button" onclick="document.getElementById('latest').scrollIntoView({behavior:'smooth'})">查看今日更新</button>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-mini">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z" stroke="#f5c542" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="txt">
+            <div class="t">数学建模校内选拔</div>
+            <div class="s">今日 14:00 公布答辩分组</div>
+          </div>
+        </div>
+        <div class="hero-mini">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 18V6l9 5 9-5v12" stroke="#f5c542" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="txt">
+            <div class="t">校园十佳歌手复赛</div>
+            <div class="s">30 强名单已更新 · 11 月 10 日开赛</div>
+          </div>
+        </div>
+        <div class="hero-mini">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#f5c542" stroke-width="1.8"/><path d="M12 7v5l3 3" stroke="#f5c542" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <div class="txt">
+            <div class="t">篮球联赛第 8 轮</div>
+            <div class="s">昨晚 21:10 战报已更新</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三栏主体 -->
+  <div class="layout-wrap">
+
+    <!-- 左频道索引 -->
+    <aside class="channel-index" aria-label="频道索引">
+      <h2>赛事频道</h2>
+      <ul>
+        <li><a href="#featured" class="active">学科竞赛 <span class="num">12</span></a></li>
+        <li><a href="#featured">才艺比拼 <span class="num">8</span></a></li>
+        <li><a href="#featured">体育联赛 <span class="num">10</span></a></li>
+        <li><a href="#featured">创意设计 <span class="num">7</span></a></li>
+        <li><a href="#categories">演讲辩论 <span class="num">6</span></a></li>
+        <li><a href="#categories">编程算法 <span class="num">9</span></a></li>
+        <li><a href="#categories">短视频创作 <span class="num">5</span></a></li>
+        <li><a href="#categories">志愿服务项目 <span class="num">4</span></a></li>
+      </ul>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="main-col">
+
+      <!-- 板块1：主题领域概览 -->
+      <section class="section" id="overview">
+        <div class="section-head">
+          <h2>校园赛事领域概览</h2>
+          <span class="more">2026 秋季学期</span>
+        </div>
+        <div class="overview-text">
+          <p>
+            <strong>每日大赛校园大赛</strong>所覆盖的校园赛事，按参与形式和评判逻辑大致分为四个方向。学科竞赛是其中赛程最密集的一类，包括全国大学生数学建模竞赛、英语演讲比赛、程序设计天梯赛等，通常由院系选拔、校赛、省赛三级构成，参赛者需要关注报名截止时间和组队规则。才艺比拼则围绕校园十佳歌手、主持人大赛、舞蹈展演展开，评分多由评委打分与现场投票加权。
+          </p>
+          <p>
+            体育联赛以院系为单位进行积分制循环赛，篮球、排球、足球三大项的赛程贯穿整个学期，每周三、周六固定比赛日。创意设计方向近年增长明显，短视频创作大赛、海报设计赛、文创产品设计赛成为学生参与度最高的类别，评审标准通常包含创意性、完成度和传播数据三个维度。了解这些方向各自的节奏和规则，比单纯追逐某一项赛事更能帮助参赛者合理分配精力。
+          </p>
+          <div class="overview-tags">
+            <span>数学建模</span>
+            <span>英语演讲</span>
+            <span>校园歌手</span>
+            <span>篮球联赛</span>
+            <span>短视频创作</span>
+            <span>海报设计</span>
+            <span>编程算法</span>
+            <span>主持人大赛</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 板块2：精选内容推荐 -->
+      <section class="section" id="featured">
+        <div class="section-head">
+          <h2>精选赛程与条目推荐</h2>
+          <a href="#latest" class="more">全部更新 →</a>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <div class="card-thumb">
+              <img src="https://picsum.photos/seed/math-modeling-2026/400/300" alt="全国大学生数学建模竞赛校内选拔赛现场" width="400" height="300" loading="lazy">
+              <span class="badge">学科竞赛</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#featured">全国大学生数学建模竞赛校内选拔赛</a></h3>
+              <p class="card-desc">三人组队、72 小时完成建模与论文，校内选拔前 15 名晋级省赛。今年题目侧重城市交通流量预测与优化。</p>
+              <div class="card-foot">
+                <div class="card-tags"><span>数学建模</span><span>组队赛</span><span>省赛晋级</span></div>
+                <span class="card-heat">热度 9.2</span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-thumb">
+              <img src="https://picsum.photos/seed/campus-singer-2026/400/300" alt="校园十佳歌手大赛复赛舞台" width="400" height="300" loading="lazy">
+              <span class="badge gold">才艺比拼</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#featured">校园十佳歌手大赛复赛</a></h3>
+              <p class="card-desc">30 强选手分三组进行两轮演唱，评委打分占 70%，现场观众投票占 30%。11 月 10 日晚在大学生活动中心开赛。</p>
+              <div class="card-foot">
+                <div class="card-tags"><span>校园歌手</span><span>复赛</span><span>现场投票</span></div>
+                <span class="card-heat">热度 8.8</span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-thumb">
+              <img src="https://picsum.photos/seed/basketball-league-08/400/300" alt="院系篮球联赛第八轮比赛跳球瞬间" width="400" height="300" loading="lazy">
+              <span class="badge">体育联赛</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#featured">院系篮球联赛第 8 轮</a></h3>
+              <p class="card-desc">计算机学院对阵经管学院，此前两队战绩同为 5 胜 2 负，本场胜者将锁定积分榜前三。昨晚 21:10 战报已更新。</p>
+              <div class="card-foot">
+                <div class="card-tags"><span>篮球联赛</span><span>积分榜</span><span>院系对抗</span></div>
+                <span class="card-heat">热度 8.5</span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-thumb">
+              <img src="https://picsum.photos/seed/short-video-2026/400/300" alt="短视频创作大赛参赛作品拍摄花絮" width="400" height="300" loading="lazy">
+              <span class="badge gold">创意设计</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#featured">校园短视频创作大赛秋季赛</a></h3>
+              <p class="card-desc">主题为“我镜头里的校园一角”，要求 3 分钟内原创短片。评审包含创意分、拍摄分和平台播放量，11 月 15 日截稿。</p>
+              <div class="card-foot">
+                <div class="card-tags"><span>短视频</span><span>原创短片</span><span>播放量</span></div>
+                <span class="card-heat">热度 8.1</span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-thumb">
+              <img src="https://picsum.photos/seed/english-speech-2026/400/300" alt="英语演讲比赛校内决赛选手演讲" width="400" height="300" loading="lazy">
+              <span class="badge">学科竞赛</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#featured">外研社英语演讲比赛校内决赛</a></h3>
+              <p class="card-desc">定题演讲“AI and Campus Life”加即兴问答两环节，前 3 名将代表学校参加省级复赛。11 月 9 日下午进行决赛。</p>
+              <div class="card-foot">
+                <div class="card-tags"><span>英语演讲</span><span>定题演讲</span><span>即兴问答</span></div>
+                <span class="card-heat">热度 8.4</span>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-thumb">
+              <img src="https://picsum.photos/seed/poster-design-2026/400/300" alt="校园海报设计大赛获奖作品展示" width="400" height="300" loading="lazy">
+              <span class="badge gold">创意设计</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#featured">校园海报设计大赛</a></h3>
+              <p class="card-desc">围绕“秋季运动会”主题设计宣传海报，要求原创且适用于线下张贴。评审从视觉冲击力、信息层次和印刷适配三个维度打分。</p>
+              <div class="card-foot">
+                <div class="card-tags"><span>海报设计</span><span>原创</span><span>视觉传达</span></div>
+                <span class="card-heat">热度 7.6</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 板块3：最新更新 -->
+      <section class="section" id="latest">
+        <div class="section-head">
+          <h2>最新赛事动态</h2>
+          <span class="more">11 月 8 日更新</span>
+        </div>
+        <div class="update-list">
+          <div class="update-item">
+            <span class="time">今天 09:30</span>
+            <div class="body">
+              <a href="#latest" class="name">数学建模校内选拔赛答辩分组公布</a>
+              <p class="summary">32 支队伍分为 8 组，11 月 9 日上午在理科楼 302 进行现场答辩。</p>
+            </div>
+          </div>
+          <div class="update-item">
+            <span class="time">今天 08:15</span>
+            <div class="body">
+              <a href="#latest" class="name">校园十佳歌手复赛 30 强名单出炉</a>
+              <p class="summary">经初赛评委打分，30 名选手晋级，复赛抽签结果同步公布。</p>
+            </div>
+          </div>
+          <div class="update-item">
+            <span class="time">昨天 21:10</span>
+            <div class="body">
+              <a href="#latest" class="name">院系篮球联赛第 8 轮战报</a>
+              <p class="summary">计算机学院 78:74 险胜经管学院，积分升至第二。</p>
+            </div>
+          </div>
+          <div class="update-item">
+            <span class="time">昨天 17:40</span>
+            <div class="body">
+              <a href="#latest" class="name">英语演讲比赛决赛出场顺序确定</a>
+              <p class="summary">12 名决赛选手按抽签顺序出场，定题演讲题目已下发。</p>
+            </div>
+          </div>
+          <div class="update-item">
+            <span class="time">11 月 6 日</span>
+            <div class="body">
+              <a href="#latest" class="name">短视频创作大赛新增“最佳人气奖”</a>
+              <p class="summary">平台播放量最高作品将额外获得单项奖，截稿日期不变。</p>
+            </div>
+          </div>
+          <div class="update-item">
+            <span class="time">11 月 5 日</span>
+            <div class="body">
+              <a href="#latest" class="name">程序设计天梯赛校内预选报名开启</a>
+              <p class="summary">个人赛制，使用在线判题系统，11 月 12 日 23:59 截止报名。</p>
+            </div>
+          </div>
+          <div class="update-item">
+            <span class="time">11 月 4 日</span>
+            <div class="body">
+              <a href="#latest" class="name">主持人大赛初赛视频提交截止</a>
+              <p class="summary">共收到 86 份参赛视频，评审正在进行，晋级结果 11 月 9 日公布。</p>
+            </div>
+          </div>
+          <div class="update-item">
+            <span class="time">11 月 3 日</span>
+            <div class="body">
+              <a href="#latest" class="name">排球联赛第二轮赛程调整</a>
+              <p class="summary">因场地检修，原定 11 月 5 日的两场比赛顺延至 11 月 7 日进行。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 板块4：分类入口 -->
+      <section class="section" id="categories">
+        <div class="section-head">
+          <h2>赛事分类入口</h2>
+          <span class="more">按方向查找</span>
+        </div>
+        <div class="cat-grid">
+          <a href="#featured" class="cat-item">
+            <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5l8 4 8-4v14" stroke="#f5c542" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+            <span class="cat-name">学科竞赛</span>
+            <span class="cat-count">12 项进行中</span>
+          </a>
+          <a href="#featured" class="cat-item">
+            <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#f5c542" stroke-width="1.8"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="#f5c542" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <span class="cat-name">才艺比拼</span>
+            <span class="cat-count">8 项进行中</span>
+          </a>
+          <a href="#featured" class="cat-item">
+            <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#f5c542" stroke-width="1.8"/><path d="M12 4v16M4 12h16" stroke="#f5c542" stroke-width="1.8"/></svg></span>
+            <span class="cat-name">体育联赛</span>
+            <span class="cat-count">10 项进行中</span>
+          </a>
+          <a href="#featured" class="cat-item">
+            <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" stroke="#f5c542" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+            <span class="cat-name">创意设计</span>
+            <span class="cat-count">7 项进行中</span>
+          </a>
+          <a href="#featured" class="cat-item">
+            <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="#f5c542" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <span class="cat-name">演讲辩论</span>
+            <span class="cat-count">6 项进行中</span>
+          </a>
+          <a href="#featured" class="cat-item">
+            <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M8 6l-4 6 4 6M16 6l4 6-4 6" stroke="#f5c542" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="cat-name">编程算法</span>
+            <span class="cat-count">9 项进行中</span>
+          </a>
+          <a href="#featured" class="cat-item">
+            <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#f5c542" stroke-width="1.8"/><path d="M10 9l5 3-5 3z" fill="#f5c542"/></svg></span>
+            <span class="cat-name">短视频创作</span>
+            <span class="cat-count">5 项进行中</span>
+          </a>
+          <a href="#featured" class="cat-item">
+            <span class="cat-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="#f5c542" stroke-width="1.8"/><circle cx="12" cy="11" r="2.5" stroke="#f5c542" stroke-width="1.8"/></svg></span>
+            <span class="cat-name">志愿服务项目</span>
+            <span class="cat-count">4 项进行中</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- 板块5：深度解析 -->
+      <section class="section deep-article" id="deep">
+        <div class="section-head">
+          <h2>深度解析：四大赛事方向的评判逻辑与备赛重点</h2>
+        </div>
+        <h3>学科竞赛：以数学建模与英语演讲为参照</h3>
+        <p>学科竞赛的评判体系相对透明，但不同赛项对能力的侧重差异很大。数学建模竞赛的核心不在编程本身，而在于把开放性问题转化为可计算的模型，并用论文清晰表达假设、求解和验证过程。评审通常从模型合理性、结果有效性和论文规范性三个维度打分，其中论文规范性是最容易被忽视的失分点——摘要是否完整、符号是否统一、图表编号是否规范，都会影响最终评级。</p>
+        <p>英语演讲比赛则更看重表达节奏和临场反应。定题演讲部分，评委关注论点是否集中、论据是否扎实；即兴问答环节则考察选手的知识面和应变能力。备赛时与其反复背诵稿子，不如针对常考话题建立自己的观点素材库，并练习在 30 秒内组织出清晰的三段式回应。</p>
+        <h3>才艺比拼：评委打分与现场投票的权重差异</h3>
+        <p>校园十佳歌手、主持人大赛这类才艺赛事，通常采用评委打分与现场投票加权的方式。以校园歌手复赛为例，评委占 70%、观众投票占 30%，这意味着单纯依靠人气难以走远，音准、气息、情感表达仍然是基础分。选手在选歌时需要考虑自身音域与歌曲难度的匹配度，舍高音、保稳定往往是更理智的策略。</p>
+        <div class="callout">
+          主持人大赛与歌手大赛的评判侧重点不同：前者更看重语言组织、控场能力和临场应变，后者更侧重声音条件与舞台表现。备赛时应当围绕赛项的核心能力做针对性训练，而不是泛泛地“多练”。
+        </div>
+        <h3>体育联赛：积分制下的赛程策略</h3>
+        <p>院系篮球、排球联赛普遍采用单循环积分制，胜一场积 2 分、负一场积 1 分、弃权积 0 分。在这种赛制下，赛季初的每一场都不容有失，但更重要的是避免主力球员在密集赛程中受伤。观察往年联赛可以发现，最终夺冠的球队往往不是开局最猛的，而是轮换深度足够、能在背靠背比赛中保持稳定输出的队伍。</p>
+        <ul>
+          <li>赛程密集期（每周三、周六双赛）应提前规划主力出场时间；</li>
+          <li>对阵积分榜下游球队时可适当轮换，保留体能应对关键卡位战；</li>
+          <li>净胜分在积分相同时可能决定排名，大比分领先时不宜过早放松防守。</li>
+        </ul>
+        <h3>创意设计：短视频与海报赛道的评审差异</h3>
+        <p>短视频创作大赛的评审通常由创意分、拍摄制作分和传播数据三部分构成，其中传播数据（播放量、点赞、评论）在部分赛事中占比可达 30%。这意味着作品除了完成度，还需要考虑开头的抓人程度和话题性。海报设计大赛则更纯粹地考察视觉传达能力，评审关注信息层级是否清晰、色彩搭配是否合理、印刷适配是否达标，几乎没有“流量”因素的干扰。</p>
+        <p>选择赛道时，擅长叙事和剪辑的学生更适合短视频，擅长平面构成和字体排印的学生则在海报赛道更有优势。两类赛事都要求原创，抄袭或过度参考往届获奖作品会被直接取消资格。</p>
+      </section>
+
+      <!-- 板块6：体验指南 -->
+      <section class="section" id="guide">
+        <div class="section-head">
+          <h2>参赛路径与内容消费指南</h2>
+          <span class="more">从了解到报名</span>
+        </div>
+        <div class="step-list">
+          <div class="step-item">
+            <span class="step-num">1</span>
+            <div class="step-body">
+              <div class="step-title">先确定方向，再筛选具体赛项</div>
+              <p class="step-desc">学科竞赛、才艺比拼、体育联赛、创意设计四类赛事的备赛周期差异很大。学科竞赛通常需要 2—4 周集中准备，才艺类赛事侧重临场发挥，体育联赛贯穿整个学期，创意设计类则依赖作品打磨时间。先根据自己可投入的时间选择方向。</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">2</span>
+            <div class="step-body">
+              <div class="step-title">判断一个赛项值不值得投入</div>
+              <p class="step-desc">看三个信号：主办方层级（校级、省级、国家级）、往届获奖作品的完成度、以及赛项是否与你的专业或兴趣方向匹配。如果一项赛事的往届获奖作品明显超出你的当前水平，可以先从校内选拔赛起步积累经验。</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">3</span>
+            <div class="step-body">
+              <div class="step-title">关注报名截止与材料要求</div>
+              <p class="step-desc">不同赛事的材料要求差别很大：数学建模需要提交论文和代码，短视频大赛需要提交成片和创作说明，海报设计需要提交源文件和印刷样张。提前一周准备好材料，避免截止前手忙脚乱。</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <span class="step-num">4</span>
+            <div class="step-body">
+              <div class="step-title">同类赛事之间如何比较选择</div>
+              <p class="step-desc">当两个赛项时间冲突时，优先选择与你长期发展方向更相关的那个。例如准备保研或出国申请的学生，学科竞赛的省级以上奖项含金量更高；而希望进入传媒、设计行业的学生，创意设计类赛事的作品集价值更大。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 板块7：FAQ -->
+      <section class="section" id="faq">
+        <div class="section-head">
+          <h2>常见问题</h2>
+          <span class="more">6 个高频疑问</span>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>数学建模校内选拔赛一般多久出结果？</summary>
+            <div class="faq-answer">校内选拔赛通常在答辩结束后 3—5 个工作日内公布晋级名单。以本学期的安排为例，11 月 9 日答辩，预计 11 月 13 日前在教务处网站公示省赛推荐名单。建议关注院系通知群，结果公布后通常需要在 48 小时内确认参赛资格。</div>
+          </details>
+          <details>
+            <summary>校园十佳歌手和主持人大赛的评判标准有什么区别？</summary>
+            <div class="faq-answer">歌手大赛以音准、气息、情感表达和舞台表现为核心评分项，评委打分通常占 70% 以上；主持人大赛则侧重语言组织、控场能力和即兴反应，部分赛事还会考察新闻播报和现场采访环节。两者都涉及舞台表现，但能力侧重完全不同。</div>
+          </details>
+          <details>
+            <summary>第一次参加学科竞赛，从哪个赛项开始比较好？</summary>
+            <div class="faq-answer">建议从校内选拔性质的英语演讲比赛或程序设计天梯赛校内预选开始。这两类赛项备赛周期相对短，评审反馈也更快，适合积累比赛经验。数学建模竞赛对团队配合和论文写作要求较高，更适合有一定基础后再参加。</div>
+          </details>
+          <details>
+            <summary>院系篮球联赛的积分规则是怎样的？</summary>
+            <div class="faq-answer">通常采用单循环积分制：胜一场得 2 分，负一场得 1 分，弃权得 0 分。积分相同时依次比较相互胜负关系、净胜分和总得分。部分赛事还会设置三分球大赛等单项活动，但不计入联赛积分。</div>
+          </details>
+          <details>
+            <summary>短视频创作大赛的播放量占分比例一般是多少？</summary>
+            <div class="faq-answer">不同赛事差异较大，常见的设置是创意与制作分占 70%、传播数据占 30%。也有赛事将播放量作为“最佳人气奖”的单独评奖依据，不影响主奖项排名。报名前应仔细阅读评分细则，避免把精力过度投入到流量运营而忽视作品质量。</div>
+          </details>
+          <details>
+            <summary>海报设计大赛对印刷文件有什么具体要求？</summary>
+            <div class="faq-answer">常见要求包括：CMYK 色彩模式、300dpi 分辨率、出血线预留 3mm、字体转曲或嵌入。部分赛事还要求提交分层源文件。评审阶段通常先看电子稿，入围后才检查印刷适配性，提前按规范准备可以避免入围后返工。</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 板块8：用户评论 -->
+      <section class="section" id="comments">
+        <div class="section-head">
+          <h2>参赛选手与观众评论</h2>
+          <span class="more">14 条讨论</span>
+        </div>
+        <div class="comment-list">
+          <div class="comment-item">
+            <div class="comment-avatar">陈</div>
+            <div class="comment-body">
+              <div class="comment-meta"><span class="nick">数模老陈</span><span class="date">今天 10:12</span></div>
+              <p class="comment-text">今年的建模题偏交通优化方向，比去年的能源调度题更接地气，但数据量大了不少，数据处理环节花了我们队将近一天。</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">林</div>
+            <div class="comment-body">
+              <div class="comment-meta"><span class="nick">林小满</span><span class="date">今天 09:45</span></div>
+              <p class="comment-text">十佳歌手复赛 30 强名单里居然有我们班同学，初赛唱的是《搁浅》，现场发挥很稳，复赛加油。</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">赵</div>
+            <div class="comment-body">
+              <div class="comment-meta"><span class="nick">赵教练</span><span class="date">昨天 22:30</span></div>
+              <p class="comment-text">计院打经管那场球我全程看了，最后两分钟连续两个三分太关键了，经管的内线防守还是差一点轮转速度。</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">吴</div>
+            <div class="comment-body">
+              <div class="comment-meta"><span class="nick">吴所谓</span><span class="date">昨天 20:18</span></div>
+              <p class="comment-text">英语演讲决赛的定题题目是 AI and Campus Life，感觉今年大家都准备得差不多，最后还是要看即兴问答拉开差距。</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">周</div>
+            <div class="comment-body">
+              <div class="comment-meta"><span class="nick">周同学</span><span class="date">11 月 7 日</span></div>
+              <p class="comment-text">短视频大赛新增了最佳人气奖，这对我们这种播放量还行但评委分不高的队伍算是个好消息，继续剪片子去了。</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">郑</div>
+            <div class="comment-body">
+              <div class="comment-meta"><span class="nick">郑在画图</span><span class="date">11 月 7 日</span></div>
+              <p class="comment-text">海报设计大赛的评审标准里“印刷适配”这一项很多人会忽略，去年有作品电子稿很惊艳，但印出来颜色偏暗直接掉出前三。</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">孙</div>
+            <div class="comment-body">
+              <div class="comment-meta"><span class="nick">孙答题</span><span class="date">11 月 6 日</span></div>
+              <p class="comment-text">天梯赛校内预选用的是在线判题系统，题目难度梯度设置比较合理，前四题基础、后两题拉开差距，适合用来练手。</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">马</div>
+            <div class="comment-body">
+              <div class="comment-meta"><span class="nick">马小跳</span><span class="date">11 月 6 日</span></div>
+              <p class="comment-text">主持人大赛初赛视频提交了，录了五遍才满意，即兴评述部分抽到的题目是“校园外卖该不该禁”，感觉发挥一般。</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">何</div>
+            <div class="comment-body">
+              <div class="comment-meta"><span class="nick">何止一点</span><span class="date">11 月 5 日</span></div>
+              <p class="comment-text">排球联赛赛程调整之后，第二轮和第三轮变成背靠背了，对阵容深度不够的院系来说挺伤的。</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">胡</div>
+            <div class="comment-body">
+              <div class="comment-meta"><span class="nick">胡一刀</span><span class="date">11 月 5 日</span></div>
+              <p class="comment-text">数学建模论文的摘要是评委第一眼看的东西，去年我们队摘要写得潦草，据说初审就被扣了不少分，今年专门练了摘要写法。</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">杨</div>
+            <div class="comment-body">
+              <div class="comment-meta"><span class="nick">杨梅冰</span><span class="date">11 月 4 日</span></div>
+              <p class="comment-text">歌手大赛复赛的观众投票是现场扫码，每人限投一票，感觉比往年刷票的情况好一些，至少现场氛围真实。</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">刘</div>
+            <div class="comment-body">
+              <div class="comment-meta"><span class="nick">刘览器</span><span class="date">11 月 3 日</span></div>
+              <p class="comment-text">篮球联赛积分榜前三咬得太紧了，计算机、经管、机械三个队都是 5 胜 2 负，最后两轮才是真正的卡位战。</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">徐</div>
+            <div class="comment-body">
+              <div class="comment-meta"><span class="nick">徐徐图之</span><span class="date">11 月 3 日</span></div>
+              <p class="comment-text">英语演讲备赛时我把常考话题分了八类，每类准备两个观点和一组数据，即兴问答的时候心里有底多了。</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">高</div>
+            <div class="comment-body">
+              <div class="comment-meta"><span class="nick">高处不胜寒</span><span class="date">11 月 2 日</span></div>
+              <p class="comment-text">志愿服务项目大赛的答辩环节建议多讲具体服务数据和受益人数，空谈理念的组基本都被评委追问到答不上来。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 板块9：相关资讯 -->
+      <section class="section" id="news">
+        <div class="section-head">
+          <h2>赛事资讯</h2>
+          <span class="more">近一周</span>
+        </div>
+        <div class="news-list">
+          <article class="news-item">
+            <div class="news-thumb">
+              <img src="https://picsum.photos/seed/news-math-competition/600/400" alt="数学建模竞赛答辩现场通知" width="600" height="400" loading="lazy">
+            </div>
+            <div class="news-body">
+              <h3 class="news-title"><a href="#news">数学建模校内选拔答辩安排出炉，32 支队伍分 8 组进行</a></h3>
+              <p class="news-summary">答辩时间为 11 月 9 日上午 8:30—12:00，每组 15 分钟陈述加 5 分钟问答，地点在理科楼 302。</p>
+              <div class="news-date">2026-11-08</div>
+            </div>
+          </article>
+          <article class="news-item">
+            <div class="news-thumb">
+              <img src="https://picsum.photos/seed/news-singer-semifinal/600/400" alt="校园十佳歌手复赛舞台布置" width="600" height="400" loading="lazy">
+            </div>
+            <div class="news-body">
+              <h3 class="news-title"><a href="#news">校园十佳歌手复赛 30 强名单公布，11 月 10 日开赛</a></h3>
+              <p class="news-summary">复赛分三组进行，每组 10 人，演唱曲目自选，评委打分占 70%、现场投票占 30%。</p>
+              <div class="news-date">2026-11-08</div>
+            </div>
+          </article>
+          <article class="news-item">
+            <div class="news-thumb">
+              <img src="https://picsum.photos/seed/news-basketball-round8/600/400" alt="篮球联赛第八轮比赛现场" width="600" height="400" loading="lazy">
+            </div>
+            <div class="news-body">
+              <h3 class="news-title"><a href="#news">院系篮球联赛第 8 轮战罢，积分榜前三同分</a></h3>
+              <p class="news-summary">计算机 78:74 经管，机械 82:69 外语，三队战绩均为 5 胜 2 负，最后两轮决定排名。</p>
+              <div class="news-date">2026-11-07</div>
+            </div>
+          </article>
+          <article class="news-item">
+            <div class="news-thumb">
+              <img src="https://picsum.photos/seed/news-video-award/600/400" alt="短视频创作大赛评审规则页面" width="600" height="400" loading="lazy">
+            </div>
+            <div class="news-body">
+              <h3 class="news-title"><a href="#news">短视频创作大赛增设“最佳人气奖”，播放量单独评奖</a></h3>
+              <p class="news-summary">人气奖与主奖项可兼得，平台播放量统计截止 11 月 15 日 24:00，评审细则同步更新。</p>
+              <div class="news-date">2026-11-06</div>
+            </div>
+          </article>
+          <article class="news-item">
+            <div class="news-thumb">
+              <img src="https://picsum.photos/seed/news-programming-signup/600/400" alt="程序设计天梯赛在线判题界面" width="600" height="400" loading="lazy">
+            </div>
+            <div class="news-body">
+              <h3 class="news-title"><a href="#news">程序设计天梯赛校内预选开放报名，11 月 12 日截止</a></h3>
+              <p class="news-summary">个人赛制，使用在线判题系统，题目难度覆盖基础语法到动态规划，前 20 名进入校队集训。</p>
+              <div class="news-date">2026-11-05</div>
+            </div>
+          </article>
+          <article class="news-item">
+            <div class="news-thumb">
+              <img src="https://picsum.photos/seed/news-volleyball-schedule/600/400" alt="排球联赛赛程调整通知" width="600" height="400" loading="lazy">
+            </div>
+            <div class="news-body">
+              <h3 class="news-title"><a href="#news">排球联赛第二轮两场比赛顺延至 11 月 7 日</a></h3>
+              <p class="news-summary">因体育馆场地检修，原定 11 月 5 日的比赛调整至 11 月 7 日下午进行，积分规则不变。</p>
+              <div class="news-date">2026-11-03</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 板块10：相关推荐 -->
+      <section class="section" id="related">
+        <div class="section-head">
+          <h2>相关推荐方向</h2>
+          <span class="more">延伸查找</span>
+        </div>
+        <div class="rec-tags">
+          <a href="#featured">数学建模论文写作规范</a>
+          <a href="#featured">英语演讲即兴问答技巧</a>
+          <a href="#featured">校园歌手选歌策略</a>
+          <a href="#featured">篮球联赛轮换安排</a>
+          <a href="#featured">短视频分镜脚本模板</a>
+          <a href="#featured">海报印刷出血设置</a>
+          <a href="#featured">程序设计天梯赛题型分布</a>
+          <a href="#featured">主持人大赛即兴评述练习</a>
+        </div>
+      </section>
+
+      <!-- 板块11：热门榜单 -->
+      <section class="section" id="ranking">
+        <div class="section-head">
+          <h2>本周校园赛事热度榜</h2>
+          <span class="more">11 月 2 日—11 月 8 日</span>
+        </div>
+        <div class="rank-list">
+          <div class="rank-item">
+            <span class="rank-num top1">1</span>
+            <div class="rank-body">
+              <div class="rank-name">全国大学生数学建模竞赛校内选拔赛</div>
+              <div class="rank-sub">学科竞赛 · 32 支队伍 · 答辩进行中</div>
+            </div>
+            <span class="rank-score">9.2</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-num top2">2</span>
+            <div class="rank-body">
+              <div class="rank-name">校园十佳歌手大赛复赛</div>
+              <div class="rank-sub">才艺比拼 · 30 强 · 11 月 10 日开赛</div>
+            </div>
+            <span class="rank-score">8.8</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-num top3">3</span>
+            <div class="rank-body">
+              <div class="rank-name">院系篮球联赛第 8 轮</div>
+              <div class="rank-sub">体育联赛 · 积分榜前三同分</div>
+            </div>
+            <span class="rank-score">8.5</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-num">4</span>
+            <div class="rank-body">
+              <div class="rank-name">外研社英语演讲比赛校内决赛</div>
+              <div class="rank-sub">学科竞赛 · 12 名选手 · 11 月 9 日</div>
+            </div>
+            <span class="rank-score">8.4</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-num">5</span>
+            <div class="rank-body">
+              <div class="rank-name">校园短视频创作大赛秋季赛</div>
+              <div class="rank-sub">创意设计 · 11 月 15 日截稿</div>
+            </div>
+            <span class="rank-score">8.1</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-num">6</span>
+            <div class="rank-body">
+              <div class="rank-name">校园海报设计大赛</div>
+              <div class="rank-sub">创意设计 · 秋季运动会主题</div>
+            </div>
+            <span class="rank-score">7.6</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 右辅助栏 -->
+    <aside class="side-col" aria-label="辅助信息">
+      <!-- 今日赛程提醒 -->
+      <div class="side-card">
+        <h3>今日赛程提醒</h3>
+        <ul class="side-list">
+          <li><span class="idx hot">1</span><div><a href="#latest">数学建模答辩分组公布</a><div class="meta">今天 09:30 · 理科楼 302</div></div></li>
+          <li><span class="idx hot">2</span><div><a href="#latest">英语演讲决赛出场顺序</a><div class="meta">今天 14:00 · 外语楼报告厅</div></div></li>
+          <li><span class="idx">3</span><div><a href="#latest">篮球联赛第 9 轮抽签</a><div class="meta">今天 16:30 · 体育部办公室</div></div></li>
+          <li><span class="idx">4</span><div><a href="#latest">短视频大赛截稿倒计时</a><div class="meta">距 11 月 15 日还有 7 天</div></div></li>
+          <li><span class="idx">5</span><div><a href="#latest">天梯赛预选报名</a><div class="meta">11 月 12 日 23:59 截止</div></div></li>
+        </ul>
+      </div>
+      <!-- 热门条目 -->
+      <div class="side-card">
+        <h3>热门条目速览</h3>
+        <ul class="side-list">
+          <li><span class="idx hot">1</span><div><a href="#featured">数学建模校内选拔赛</a><div class="meta">热度 9.2 · 学科竞赛</div></div></li>
+          <li><span class="idx hot">2</span><div><a href="#featured">校园十佳歌手复赛</a><div class="meta">热度 8.8 · 才艺比拼</div></div></li>
+          <li><span class="idx">3</span><div><a href="#featured">院系篮球联赛第 8 轮</a><div class="meta">热度 8.5 · 体育联赛</div></div></li>
+          <li><span class="idx">4</span><div><a href="#featured">英语演讲校内决赛</a><div class="meta">热度 8.4 · 学科竞赛</div></div></li>
+          <li><span class="idx">5</span><div><a href="#featured">短视频创作大赛秋季赛</a><div class="meta">热度 8.1 · 创意设计</div></div></li>
+        </ul>
+      </div>
+      <!-- 参赛日历 -->
+      <div class="side-card">
+        <h3>近三日节点</h3>
+        <ul class="side-list">
+          <li><span class="idx">11/08</span><div><a href="#latest">数学建模答辩分组公布</a><div class="meta">09:30</div></div></li>
+          <li><span class="idx">11/09</span><div><a href="#latest">数学建模现场答辩</a><div class="meta">08:30—12:00</div></div></li>
+          <li><span class="idx">11/09</span><div><a href="#latest">英语演讲比赛决赛</a><div class="meta">14:00—17:30</div></div></li>
+          <li><span class="idx">11/10</span><div><a href="#latest">十佳歌手复赛第一组</a><div class="meta">19:00—21:30</div></div></li>
+          <li><span class="idx">11/12</span><div><a href="#latest">天梯赛预选报名截止</a><div class="meta">23:59</div></div></li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- 页尾 -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="fb-name">每日大赛<span>校园大赛</span></div>
+        <p class="fb-desc">
+          汇聚全国高校每日赛事条目：学科竞赛、才艺比拼、体育联赛与创意设计，为参赛学生、指导教师和赛事组织者提供赛程追踪与备赛参考。
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>赛事方向</h4>
+        <ul>
+          <li><a href="#featured">学科竞赛</a></li>
+          <li><a href="#featured">才艺比拼</a></li>
+          <li><a href="#featured">体育联赛</a></li>
+          <li><a href="#featured">创意设计</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>热门赛项</h4>
+        <ul>
+          <li><a href="#featured">数学建模</a></li>
+          <li><a href="#featured">校园歌手</a></li>
+          <li><a href="#featured">篮球联赛</a></li>
+          <li><a href="#featured">短视频创作</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>快速入口</h4>
+        <ul>
+          <li><a href="#latest">最新动态</a></li>
+          <li><a href="#faq">常见问题</a></li>
+          <li><a href="#ranking">热度榜单</a></li>
+          <li><a href="#guide">参赛指南</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>部分内容为示例数据，仅用于展示页面结构 · 2026 每日大赛校园大赛</p>
+    </div>
+  </footer>
+
+</body>
+              </html>
