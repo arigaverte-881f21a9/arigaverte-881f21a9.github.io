@@ -1,0 +1,1459 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>寸止挑战在线 - 玩法攻略与社区动态</title>
+  <meta name="description" content="寸止挑战在线提供各类寸止挑战的玩法规则、进阶技巧、热门关卡与社区排行，适合想了解寸止挑战或寻找同好交流的玩家。">
+  <meta name="keywords" content="寸止挑战规则,寸止挑战关卡,寸止挑战技巧,寸止挑战排行,寸止挑战社区">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%231a1e2b'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23e6b450' stroke-width='6'/%3E%3Cpath d='M50 20v30l20 20' stroke='%23e6b450' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f7f5f1;
+      --surface: #ffffff;
+      --ink: #1a1e2b;
+      --ink-secondary: #4a4f5e;
+      --muted: #7a7f8e;
+      --line: #e2ddd5;
+      --accent: #c93e2b;
+      --accent-soft: #f9e8e4;
+      --gold: #b8860b;
+      --gold-soft: #fcf3e0;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+      --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans SC', sans-serif;
+      --font-serif: 'Georgia', 'Times New Roman', 'Noto Serif SC', serif;
+      --max-width: 1360px;
+      --header-height: 64px;
+      --announce-height: 40px;
+      --sticky-offset: calc(var(--header-height) + var(--announce-height) + 8px);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-padding-top: var(--sticky-offset);
+    }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    /* 吸顶公告条 + 页头 */
+    .announce-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--ink);
+      color: #f0ede8;
+      font-size: 14px;
+      height: var(--announce-height);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .announce-bar .container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .announce-bar .badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 3px;
+      letter-spacing: 0.5px;
+    }
+    .site-header {
+      position: sticky;
+      top: var(--announce-height);
+      z-index: 99;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      height: var(--header-height);
+      box-shadow: var(--shadow-sm);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .brand svg {
+      width: 32px;
+      height: 32px;
+    }
+    .brand-text {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--ink);
+    }
+    .main-nav {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      flex: 1;
+      justify-content: center;
+    }
+    .main-nav::-webkit-scrollbar {
+      display: none;
+    }
+    .main-nav a {
+      padding: 6px 14px;
+      font-size: 14px;
+      color: var(--ink-secondary);
+      border-radius: 20px;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+    }
+    .main-nav a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .quick-entry {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .quick-entry .btn {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .quick-entry .btn:hover {
+      opacity: 0.85;
+    }
+    .quick-entry .btn-ghost {
+      background: transparent;
+      color: var(--ink-secondary);
+      border: 1px solid var(--line);
+    }
+    .quick-entry .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    /* 首屏 */
+    .hero {
+      padding: 48px 0 40px;
+      background: linear-gradient(135deg, #f7f5f1 0%, #ede9e1 100%);
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .hero-content h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+    .hero-content .hero-desc {
+      font-size: 1.05rem;
+      color: var(--ink-secondary);
+      max-width: 540px;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .hero-actions .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+    }
+    .hero-actions .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      padding: 10px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 15px;
+      border: 1.5px solid var(--ink);
+      cursor: pointer;
+    }
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-visual svg {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+    }
+    /* 三栏主布局 */
+    .main-layout {
+      display: grid;
+      grid-template-columns: 180px 1fr 260px;
+      gap: 32px;
+      padding: 40px 0 56px;
+      align-items: start;
+    }
+    /* 左栏频道索引 */
+    .channel-index {
+      position: sticky;
+      top: calc(var(--sticky-offset) + 16px);
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      padding: 20px 16px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+    .channel-index h2 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    .channel-index ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .channel-index li a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      color: var(--ink-secondary);
+      transition: background 0.15s, color 0.15s;
+    }
+    .channel-index li a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    /* 中间主内容 */
+    .content-main {
+      min-width: 0;
+    }
+    /* 右辅助栏 */
+    .sidebar {
+      position: sticky;
+      top: calc(var(--sticky-offset) + 16px);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .sidebar-widget {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+    .sidebar-widget h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hot-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .hot-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 13px;
+    }
+    .hot-list .rank {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      background: var(--gold-soft);
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .hot-list .rank.top3 {
+      background: var(--accent);
+      color: #fff;
+    }
+    .hot-list .hot-title {
+      color: var(--ink-secondary);
+      line-height: 1.4;
+    }
+    .hot-list .hot-title:hover {
+      color: var(--accent);
+    }
+    .update-stream {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .update-stream li {
+      color: var(--ink-secondary);
+      line-height: 1.4;
+    }
+    .update-stream .time {
+      font-size: 11px;
+      color: var(--muted);
+      display: block;
+      margin-top: 2px;
+    }
+    /* 通用板块 */
+    .section {
+      margin-bottom: 40px;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .section-header h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .section-header .more-link {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .card-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #e8e4dc;
+    }
+    .card-body {
+      padding: 14px 16px 16px;
+    }
+    .card-type {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 3px;
+      background: var(--gold-soft);
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    .card-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .card-tags span {
+      font-size: 11px;
+      background: #f0ede8;
+      padding: 2px 8px;
+      border-radius: 10px;
+      color: var(--ink-secondary);
+    }
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+    }
+    .card-meta .hot {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    /* 紧凑列表 */
+    .compact-list {
+      list-style: none;
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .compact-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .compact-list li:last-child {
+      border-bottom: none;
+    }
+    .compact-list .item-name {
+      font-weight: 600;
+      color: var(--ink);
+      flex-shrink: 0;
+    }
+    .compact-list .item-desc {
+      color: var(--muted);
+      font-size: 13px;
+      flex: 1;
+      text-align: right;
+    }
+    /* 分类入口 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .category-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px 12px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .category-item:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    /* 深度解析 */
+    .deep-dive {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .deep-dive h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 24px 0 12px;
+      color: var(--ink);
+    }
+    .deep-dive h3:first-of-type {
+      margin-top: 0;
+    }
+    .deep-dive p {
+      font-size: 15px;
+      color: var(--ink-secondary);
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+    .deep-dive ul {
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    .deep-dive li {
+      font-size: 15px;
+      color: var(--ink-secondary);
+      line-height: 1.8;
+      margin-bottom: 6px;
+    }
+    /* 体验指南 */
+    .guide-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .guide-step {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      padding: 20px;
+      position: relative;
+    }
+    .guide-step .step-num {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent-soft);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .guide-step h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .guide-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .faq-list details {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 0 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-list summary {
+      padding: 16px 0;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-list summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-list summary::after {
+      content: '+';
+      font-size: 20px;
+      color: var(--muted);
+      transition: transform 0.2s;
+    }
+    .faq-list details[open] summary::after {
+      content: '−';
+      color: var(--accent);
+    }
+    .faq-answer {
+      padding-bottom: 16px;
+      font-size: 14px;
+      color: var(--ink-secondary);
+      line-height: 1.7;
+    }
+    /* 评论 */
+    .comment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .comment-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .comment-nick {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ink);
+    }
+    .comment-date {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .comment-text {
+      font-size: 13px;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+    }
+    /* 资讯 */
+    .news-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .news-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 16px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      align-items: center;
+    }
+    .news-date {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+    .news-date .day {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      display: block;
+    }
+    .news-content h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .news-content p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    /* 标签索引 */
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tag-cloud a {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: var(--ink-secondary);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tag-cloud a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    /* 时间线 */
+    .timeline {
+      list-style: none;
+      position: relative;
+      padding-left: 24px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--line);
+    }
+    .timeline li {
+      position: relative;
+      margin-bottom: 20px;
+      padding-left: 16px;
+    }
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: -22px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--surface);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .timeline .tl-date {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .timeline .tl-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 2px 0 4px;
+    }
+    .timeline .tl-desc {
+      font-size: 13px;
+      color: var(--ink-secondary);
+    }
+    /* 主题领域概览 */
+    .overview-text {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      padding: 28px 32px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--ink-secondary);
+    }
+    .overview-text p {
+      margin-bottom: 14px;
+    }
+    .overview-text p:last-child {
+      margin-bottom: 0;
+    }
+    /* 页尾 */
+    .site-footer {
+      background: var(--ink);
+      color: #b8bcc8;
+      padding: 48px 0 28px;
+      margin-top: 16px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+    }
+    .footer-brand h3 {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .footer-brand p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #8a8f9e;
+      max-width: 300px;
+    }
+    .footer-col h4 {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer-col li a {
+      font-size: 13px;
+      color: #8a8f9e;
+      transition: color 0.2s;
+    }
+    .footer-col li a:hover {
+      color: #fff;
+    }
+    .footer-bottom {
+      border-top: 1px solid #2a2f3e;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      color: #6a6f7e;
+    }
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+      .channel-index,
+      .sidebar {
+        display: none;
+      }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .hero-visual {
+        display: none;
+      }
+      .category-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .main-nav {
+        justify-content: flex-start;
+        gap: 2px;
+      }
+    }
+    @media (max-width: 740px) {
+      .container {
+        padding: 0 16px;
+      }
+      .announce-bar .container {
+        gap: 8px;
+        font-size: 12px;
+      }
+      .header-inner {
+        gap: 12px;
+      }
+      .brand-text {
+        font-size: 16px;
+      }
+      .brand svg {
+        width: 26px;
+        height: 26px;
+      }
+      .main-nav {
+        display: none;
+      }
+      .quick-entry .btn {
+        padding: 5px 12px;
+        font-size: 12px;
+      }
+      .hero {
+        padding: 32px 0 28px;
+      }
+      .hero-content h1 {
+        font-size: 1.8rem;
+      }
+      .hero-content .hero-desc {
+        font-size: 0.95rem;
+      }
+      .section-header h2 {
+        font-size: 18px;
+      }
+      .card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 12px;
+      }
+      .card-body {
+        padding: 10px 12px 12px;
+      }
+      .card-title {
+        font-size: 14px;
+      }
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .deep-dive {
+        padding: 20px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .news-item {
+        grid-template-columns: 60px 1fr;
+        gap: 12px;
+        padding: 12px;
+      }
+      .news-date .day {
+        font-size: 18px;
+      }
+      .comment-grid {
+        grid-template-columns: 1fr;
+      }
+      .compact-list li {
+        flex-wrap: wrap;
+        gap: 4px;
+        padding: 12px 16px;
+      }
+      .compact-list .item-desc {
+        text-align: left;
+        width: 100%;
+        flex-basis: 100%;
+      }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+  <!-- 吸顶公告条 -->
+  <div class="announce-bar">
+    <div class="container">
+      <span class="badge">最新</span>
+      <span>11 月 8 日新增：极限边缘 3 关、静默模式 2 关、社区挑战赛第 4 期开启</span>
+    </div>
+  </div>
+
+  <!-- 吸顶页头 -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <svg viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="46" stroke="#c93e2b" stroke-width="5"/>
+          <path d="M50 18v32l18 18" stroke="#c93e2b" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="8" fill="#b8860b"/>
+        </svg>
+        <span class="brand-text">寸止挑战在线</span>
+      </div>
+      <nav class="main-nav" aria-label="主题导航">
+        <a href="/#overview">玩法概览</a>
+        <a href="/#featured">精选关卡</a>
+        <a href="/#updates">最新更新</a>
+        <a href="/#categories">分类入口</a>
+        <a href="/#deep-dive">深度解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#community">社区评论</a>
+        <a href="/#news">相关资讯</a>
+        <a href="/#ranking">热门榜单</a>
+      </nav>
+      <div class="quick-entry">
+        <button class="btn btn-ghost" type="button">登录</button>
+        <button class="btn" type="button">开始挑战</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 首屏 -->
+  <section class="hero" id="overview">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <h1>寸止挑战在线</h1>
+        <p class="hero-desc">汇聚各类寸止挑战的玩法规则、关卡攻略、进阶技巧与社区排行，从入门到硬核模式一站式了解。</p>
+        <div class="hero-actions">
+          <button class="btn-primary" type="button">浏览热门关卡</button>
+          <button class="btn-outline" type="button">加入社区讨论</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <svg viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="30" width="280" height="200" rx="16" fill="#f0ede8" stroke="#e2ddd5" stroke-width="2"/>
+          <circle cx="160" cy="130" r="60" stroke="#c93e2b" stroke-width="4" stroke-dasharray="8 8" fill="none"/>
+          <circle cx="160" cy="130" r="40" stroke="#b8860b" stroke-width="3" fill="none"/>
+          <path d="M160 70v30l22 22" stroke="#c93e2b" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="160" cy="130" r="6" fill="#b8860b"/>
+          <rect x="60" y="250" width="200" height="8" rx="4" fill="#e2ddd5"/>
+          <rect x="100" y="250" width="80" height="8" rx="4" fill="#c93e2b"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 主内容区 -->
+  <main class="container main-layout">
+    <!-- 左频道索引 -->
+    <aside class="channel-index">
+      <h2>频道索引</h2>
+      <ul>
+        <li><a href="/#featured">极限边缘</a></li>
+        <li><a href="/#featured">静默模式</a></li>
+        <li><a href="/#featured">节奏大师</a></li>
+        <li><a href="/#featured">耐力试炼</a></li>
+        <li><a href="/#featured">精准控制</a></li>
+        <li><a href="/#featured">盲选挑战</a></li>
+        <li><a href="/#featured">团队协作</a></li>
+        <li><a href="/#featured">限时冲刺</a></li>
+        <li><a href="/#ranking">社区排行</a></li>
+        <li><a href="/#updates">更新日志</a></li>
+      </ul>
+    </aside>
+
+    <!-- 中间主内容 -->
+    <div class="content-main">
+      <!-- 主题领域概览 -->
+      <section class="section" id="overview-text">
+        <div class="section-header">
+          <h2>寸止挑战领域概览</h2>
+        </div>
+        <div class="overview-text">
+          <p>寸止挑战是一种以“控制与释放”为核心的互动玩法，参与者需要在规定节奏或条件下完成一系列操作，考验反应速度、节奏感和心理素质。目前主流方向包括极限边缘、静默模式、节奏大师、耐力试炼、精准控制、盲选挑战、团队协作和限时冲刺八大类。</p>
+          <p>极限边缘侧重在高压力环境下保持操作稳定，静默模式要求全程无失误，节奏大师跟随音乐节拍完成动作，耐力试炼则拉长单局时长考验持久力。精准控制追求毫米级操作精度，盲选挑战隐藏部分视觉提示，团队协作需要多人配合完成同步任务，限时冲刺以最短通关时间为目标。</p>
+          <p>截至 2026 年 11 月，社区活跃关卡已超过 340 个，其中“深渊回响”“零帧起手”“逆流时钟”等关卡在玩家中讨论度较高。新手建议从节奏大师和精准控制类低难度关卡入手，逐步过渡到极限边缘和盲选挑战。</p>
+        </div>
+      </section>
+
+      <!-- 精选内容推荐 -->
+      <section class="section" id="featured">
+        <div class="section-header">
+          <h2>精选关卡推荐</h2>
+          <a class="more-link" href="/#featured">查看全部</a>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <img class="card-img" src="https://picsum.photos/seed/cunzhi-abyss42/400/300" alt="深渊回响关卡封面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">极限边缘</span>
+              <h3 class="card-title">深渊回响</h3>
+              <p class="card-desc">在连续 90 秒的递增压力下保持操作零失误，中途加入随机干扰事件，考验心理稳定性。</p>
+              <div class="card-tags"><span>高难度</span><span>心理博弈</span><span>限时</span></div>
+              <div class="card-meta"><span class="hot">热度 9.8</span><span>4.2 万次挑战</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img class="card-img" src="https://picsum.photos/seed/cunzhi-zeroframe17/400/300" alt="零帧起手关卡封面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">精准控制</span>
+              <h3 class="card-title">零帧起手</h3>
+              <p class="card-desc">要求在第 1 帧内完成起手动作，误差窗口仅 0.05 秒，适合打磨操作精度。</p>
+              <div class="card-tags"><span>微操</span><span>帧级判定</span><span>进阶</span></div>
+              <div class="card-meta"><span class="hot">热度 9.5</span><span>3.7 万次挑战</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img class="card-img" src="https://picsum.photos/seed/cunzhi-clock08/400/300" alt="逆流时钟关卡封面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">节奏大师</span>
+              <h3 class="card-title">逆流时钟</h3>
+              <p class="card-desc">音乐节奏逐段加速，后半段倒放节拍，需要快速切换节奏感知模式。</p>
+              <div class="card-tags"><span>音乐</span><span>变速</span><span>节奏感</span></div>
+              <div class="card-meta"><span class="hot">热度 9.3</span><span>2.9 万次挑战</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img class="card-img" src="https://picsum.photos/seed/cunzhi-silent23/400/300" alt="静默深渊关卡封面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">静默模式</span>
+              <h3 class="card-title">静默深渊</h3>
+              <p class="card-desc">全程关闭声音提示，仅靠视觉信号完成连续 60 次精准点击，失误即重置。</p>
+              <div class="card-tags"><span>无提示</span><span>专注力</span><span>零失误</span></div>
+              <div class="card-meta"><span class="hot">热度 9.1</span><span>2.4 万次挑战</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img class="card-img" src="https://picsum.photos/seed/cunzhi-blind55/400/300" alt="盲选迷宫关卡封面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">盲选挑战</span>
+              <h3 class="card-title">盲选迷宫</h3>
+              <p class="card-desc">隐藏 70% 的界面提示，依靠记忆和推理在迷宫中完成路径选择。</p>
+              <div class="card-tags"><span>记忆</span><span>推理</span><span>高难度</span></div>
+              <div class="card-meta"><span class="hot">热度 8.9</span><span>2.1 万次挑战</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img class="card-img" src="https://picsum.photos/seed/cunzhi-team77/400/300" alt="双人同步关卡封面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">团队协作</span>
+              <h3 class="card-title">双人同步</h3>
+              <p class="card-desc">两名玩家需在 0.3 秒内先后完成指定操作，同步率低于 95% 即判定失败。</p>
+              <div class="card-tags"><span>双人</span><span>默契</span><span>同步率</span></div>
+              <div class="card-meta"><span class="hot">热度 8.7</span><span>1.8 万次挑战</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img class="card-img" src="https://picsum.photos/seed/cunzhi-endure31/400/300" alt="百轮耐力关卡封面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">耐力试炼</span>
+              <h3 class="card-title">百轮耐力</h3>
+              <p class="card-desc">连续完成 100 轮基础操作，每轮难度微增，后期对注意力的消耗极大。</p>
+              <div class="card-tags"><span>持久战</span><span>注意力</span><span>长局</span></div>
+              <div class="card-meta"><span class="hot">热度 8.6</span><span>1.5 万次挑战</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img class="card-img" src="https://picsum.photos/seed/cunzhi-speed99/400/300" alt="极速冲刺关卡封面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <span class="card-type">限时冲刺</span>
+              <h3 class="card-title">极速冲刺</h3>
+              <p class="card-desc">60 秒内完成尽可能多的有效操作，追求极限手速与准确率的平衡。</p>
+              <div class="card-tags"><span>手速</span><span>爆发</span><span>短局</span></div>
+              <div class="card-meta"><span class="hot">热度 8.4</span><span>1.3 万次挑战</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 最新更新 / 动态 -->
+      <section class="section" id="updates">
+        <div class="section-header">
+          <h2>最新更新与动态</h2>
+        </div>
+        <ul class="compact-list">
+          <li><span class="item-name">深渊回响</span><span class="item-desc">新增“噩梦”难度选项，干扰事件频率提升 40% · 11 月 8 日</span></li>
+          <li><span class="item-name">静默深渊</span><span class="item-desc">第 3 赛季排行榜重置，前 100 名获得专属徽章 · 11 月 7 日</span></li>
+          <li><span class="item-name">逆流时钟</span><span class="item-desc">第 8 首曲目“倒带”上线，BPM 从 128 渐变至 96 · 11 月 6 日</span></li>
+          <li><span class="item-name">零帧起手</span><span class="item-desc">判定窗口从 0.06 秒收紧至 0.05 秒，同步更新练习模式 · 11 月 5 日</span></li>
+          <li><span class="item-name">双人同步</span><span class="item-desc">新增 3 张双人协作地图，支持跨平台匹配 · 11 月 4 日</span></li>
+          <li><span class="item-name">百轮耐力</span><span class="item-desc">修复第 73 轮偶发卡顿问题，整体流畅度提升 · 11 月 3 日</span></li>
+          <li><span class="item-name">盲选迷宫</span><span class="item-desc">隐藏率从 60% 调整至 70%，新增 2 条隐蔽路线 · 11 月 2 日</span></li>
+          <li><span class="item-name">极速冲刺</span><span class="item-desc">周赛开放报名，本周主题为“零失误冲刺” · 11 月 1 日</span></li>
+          <li><span class="item-name">社区挑战赛</span><span class="item-desc">第 4 期“寸止耐力周”开启，累计参与人数破 8000 · 10 月 30 日</span></li>
+          <li><span class="item-name">全站排行</span><span class="item-desc">新增“稳步上升”标签，标记近期进步最快的玩家 · 10 月 28 日</span></li>
+        </ul>
+      </section>
+
+      <!-- 分类入口 -->
+      <section class="section" id="categories">
+        <div class="section-header">
+          <h2>分类入口</h2>
+        </div>
+        <div class="category-grid">
+          <div class="category-item" tabindex="0">极限边缘</div>
+          <div class="category-item" tabindex="0">静默模式</div>
+          <div class="category-item" tabindex="0">节奏大师</div>
+          <div class="category-item" tabindex="0">耐力试炼</div>
+          <div class="category-item" tabindex="0">精准控制</div>
+          <div class="category-item" tabindex="0">盲选挑战</div>
+          <div class="category-item" tabindex="0">团队协作</div>
+          <div class="category-item" tabindex="0">限时冲刺</div>
+        </div>
+      </section>
+
+      <!-- 深度解析正文 -->
+      <section class="section" id="deep-dive">
+        <div class="section-header">
+          <h2>深度解析：寸止挑战的类型差异与评判维度</h2>
+        </div>
+        <div class="deep-dive">
+          <h3>极限边缘与静默模式的核心区别</h3>
+          <p>极限边缘强调“在压力下保持稳定”，干扰源来自外部环境（随机事件、难度递增、时间压迫）；静默模式则切断声音或视觉提示，逼迫玩家依靠内在节奏感。前者考验抗干扰能力，后者考验专注力与肌肉记忆。选择时可以先判断自己更擅长“屏蔽外界”还是“维持内部一致性”。</p>
+          <h3>节奏大师与限时冲刺的节奏差异</h3>
+          <p>节奏大师的节奏由音乐驱动，玩家需要跟随外部节拍完成动作，适合对音乐敏感、喜欢同步操作的人。限时冲刺的节奏由玩家自己掌控，在固定时间内追求最大有效操作量，适合爆发力强、手速快的玩家。两者在训练目标上互补：前者提升节奏稳定性，后者提升瞬时反应。</p>
+          <h3>耐力试炼与精准控制的投入回报比</h3>
+          <p>耐力试炼的单局时长通常在 10—20 分钟，回报在于长局稳定性的提升，适合有整块时间投入的玩家。精准控制的单局往往在 1—3 分钟内结束，但重复挑战次数多，适合碎片化时间打磨细节。从学习曲线看，精准控制类关卡更容易获得即时反馈，耐力试炼的进步周期更长但迁移性更强。</p>
+          <h3>盲选挑战与团队协作的适用场景</h3>
+          <p>盲选挑战适合喜欢解谜和推理的玩家，隐藏信息带来的不确定性是乐趣来源。团队协作则需要至少两名玩家，同步率是核心指标，适合与朋友或固定搭档一起练习。如果更喜欢单人沉浸体验，优先尝试盲选挑战；如果享受配合与沟通，团队协作类关卡会更对味。</p>
+          <h3>评判一个寸止挑战关卡是否值得投入时间</h3>
+          <ul>
+            <li><strong>判定精度：</strong>误差窗口是否合理，过宽缺乏挑战性，过窄容易产生挫败感。</li>
+            <li><strong>反馈清晰度：</strong>成功与失败是否有明确的视觉或听觉反馈，便于调整策略。</li>
+            <li><strong>难度曲线：</strong>前期是否提供足够的适应期，后期是否有明确的提升路径。</li>
+            <li><strong>重复可玩性：</strong>是否存在随机要素或多种解法，避免机械重复。</li>
+            <li><strong>社区活跃度：</strong>是否有排行榜、讨论帖或挑战赛，影响持续投入的动力。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 体验指南 / 消费路径 -->
+      <section class="section" id="guide">
+        <div class="section-header">
+          <h2>体验指南：从哪类关卡开始</h2>
+        </div>
+        <div class="guide-steps">
+          <div class="guide-step">
+            <div class="step-num">01</div>
+            <h4>先试节奏大师</h4>
+            <p>跟随音乐节拍操作，容错窗口相对宽松，适合建立基础节奏感和操作习惯。</p>
+          </div>
+          <div class="guide-step">
+            <div class="step-num">02</div>
+            <h4>再练精准控制</h4>
+            <p>缩小判定窗口，追求单次操作精度，逐步建立肌肉记忆和帧级判断力。</p>
+          </div>
+          <div class="guide-step">
+            <div class="step-num">03</div>
+            <h4>挑战极限边缘</h4>
+            <p>引入外部干扰和时间压力，检验前两个阶段的稳定性是否扎实。</p>
+          </div>
+          <div class="guide-step">
+            <div class="step-num">04</div>
+            <h4>尝试盲选与团队</h4>
+            <p>在信息不完整或需要配合的环境下，综合运用已掌握的反应与判断能力。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section" id="faq">
+        <div class="section-header">
+          <h2>常见问题</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>寸止挑战的关卡一般多久更新一次？</summary>
+            <div class="faq-answer">热门关卡通常每 2—3 周推出新难度或变体，社区自制关卡更新频率更高，部分活跃作者每周都会发布新内容。官方赛季更新一般按月进行，会伴随排行榜重置和新规则上线。</div>
+          </details>
+          <details>
+            <summary>极限边缘和静默模式有什么区别？</summary>
+            <div class="faq-answer">极限边缘通过外部干扰（随机事件、时间压迫）增加难度，静默模式则移除声音或视觉提示，要求玩家依靠内部节奏完成操作。前者考验抗干扰能力，后者考验专注力和肌肉记忆。</div>
+          </details>
+          <details>
+            <summary>第一次接触寸止挑战，从哪个关卡开始比较好？</summary>
+            <div class="faq-answer">建议从“逆流时钟”或“百轮耐力”的低难度模式入手，这两关节奏明确、反馈清晰，适合建立基础操作习惯。熟练后再尝试“零帧起手”或“深渊回响”等判定更严格的关卡。</div>
+          </details>
+          <details>
+            <summary>寸止挑战的评判标准通常是什么？</summary>
+            <div class="faq-answer">主要看三个方面：操作精度（误差窗口内的完成次数）、稳定性（连续成功的轮次）、效率（在限定时间内完成的有效操作量）。部分关卡还会加入同步率或失误惩罚作为额外指标。</div>
+          </details>
+          <details>
+            <summary>盲选挑战的乐趣在哪里？</summary>
+            <div class="faq-answer">盲选挑战隐藏了大部分界面提示，玩家需要依靠记忆、推理和试错来推进。乐趣在于不确定性和探索感，每次尝试都可能发现新的路径或规律，适合喜欢解谜和推理的玩家。</div>
+          </details>
+          <details>
+            <summary>团队协作类关卡需要几个人才能玩？</summary>
+            <div class="faq-answer">多数团队协作关卡支持 2—4 人参与，其中双人模式最常见。部分关卡允许单人通过镜像模式练习，但官方推荐至少两人配合，以体验完整的同步判定机制。</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 用户评论 -->
+      <section class="section" id="community">
+        <div class="section-header">
+          <h2>社区评论</h2>
+        </div>
+        <div class="comment-grid">
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">节奏偏执狂</span><span class="comment-date">11 月 8 日</span></div><p class="comment-text">深渊回响的噩梦难度太顶了，干扰事件一多手就开始抖，练了一周才稳定下来。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">零帧选手</span><span class="comment-date">11 月 8 日</span></div><p class="comment-text">零帧起手判定收紧之后反而更有意思了，以前 0.06 秒还能靠蒙，现在必须实打实练。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">静默观察者</span><span class="comment-date">11 月 7 日</span></div><p class="comment-text">静默深渊第 60 次点击永远是我的坎，每次都差最后两下，心态快崩了。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">倒带爱好者</span><span class="comment-date">11 月 7 日</span></div><p class="comment-text">逆流时钟新加的倒带曲目不错，BPM 渐变很顺滑，比前面几首更有挑战性。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">双人搭档A</span><span class="comment-date">11 月 6 日</span></div><p class="comment-text">双人同步的跨平台匹配终于上了，以前只能同设备玩，现在和朋友远程配合方便多了。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">百轮幸存者</span><span class="comment-date">11 月 6 日</span></div><p class="comment-text">百轮耐力后期注意力消耗真的夸张，第 80 轮之后基本靠本能了，但通关之后成就感拉满。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">迷宫绘制师</span><span class="comment-date">11 月 5 日</span></div><p class="comment-text">盲选迷宫隐藏率提到 70% 之后难度陡增，不过新加的路线设计得挺巧，值得反复刷。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">手速即正义</span><span class="comment-date">11 月 5 日</span></div><p class="comment-text">极速冲刺的零失误周赛主题很对我胃口，平时追求手速容易忽略准确率，这次正好练稳定。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">休闲玩家阿树</span><span class="comment-date">11 月 4 日</span></div><p class="comment-text">节奏大师类关卡对新手确实友好，判定窗口宽，先玩这个建立信心再挑战别的类型。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">帧数警察</span><span class="comment-date">11 月 4 日</span></div><p class="comment-text">精准控制类的判定反馈做得好的话体验很流畅，零帧起手的视觉提示就挺清晰。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">耐力试炼常客</span><span class="comment-date">11 月 3 日</span></div><p class="comment-text">百轮耐力的修复补丁来得及时，之前第 73 轮卡顿让我白丢了好几次进度。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">社区赛新人</span><span class="comment-date">11 月 3 日</span></div><p class="comment-text">第 4 期挑战赛氛围不错，排行榜上高手很多，看他们的回放能学到不少操作细节。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">节奏切换器</span><span class="comment-date">11 月 2 日</span></div><p class="comment-text">逆流时钟后半段倒放节拍的设计很妙，刚开始总想跟着正拍走，习惯之后反而更带感。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">同步率焦虑者</span><span class="comment-date">11 月 2 日</span></div><p class="comment-text">双人同步的 95% 同步率要求有点高，和路人匹配经常差一点，建议找固定搭档练。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">深夜挑战者</span><span class="comment-date">11 月 1 日</span></div><p class="comment-text">静默模式晚上玩特别有沉浸感，没有声音提示全靠视觉，注意力会高度集中。</p></div>
+          <div class="comment-item"><div class="comment-header"><span class="comment-nick">全类型收集控</span><span class="comment-date">11 月 1 日</span></div><p class="comment-text">八个类型各有侧重，目前刷完了节奏大师和精准控制，准备转战团队协作。</p></div>
+        </div>
+      </section>
+
+      <!-- 相关资讯 -->
+      <section class="section" id="news">
+        <div class="section-header">
+          <h2>相关资讯</h2>
+        </div>
+        <ul class="news-list">
+          <li class="news-item">
+            <div class="news-date"><span class="day">08</span>11 月</div>
+            <div class="news-content"><h4>“深渊回响”噩梦难度上线首日参与破万</h4><p>新增随机干扰事件与动态难度调整，首日通关率约为 3.7%。</p></div>
+          </li>
+          <li class="news-item">
+            <div class="news-date"><span class="day">07</span>11 月</div>
+            <div class="news-content"><h4>静默深渊第 3 赛季排行榜重置</h4><p>前 100 名玩家获得专属徽章，新赛季新增“无瑕”成就条件。</p></div>
+          </li>
+          <li class="news-item">
+            <div class="news-date"><span class="day">05</span>11 月</div>
+            <div class="news-content"><h4>零帧起手判定窗口收紧至 0.05 秒</h4><p>同步更新练习模式，提供逐帧回放与误差分析功能。</p></div>
+          </li>
+          <li class="news-item">
+            <div class="news-date"><span class="day">03</span>11 月</div>
+            <div class="news-content"><h4>双人同步新增跨平台匹配与三张地图</h4><p>支持不同设备间的双人协作，同步率算法同步优化。</p></div>
+          </li>
+          <li class="news-item">
+            <div class="news-date"><span class="day">01</span>11 月</div>
+            <div class="news-content"><h4>“寸止耐力周”社区挑战赛报名开启</h4><p>累计参与人数突破 8000，耐力试炼类关卡热度环比上升 22%。</p></div>
+          </li>
+          <li class="news-item">
+            <div class="news-date"><span class="day">28</span>10 月</div>
+            <div class="news-content"><h4>全站排行新增“稳步上升”标签</h4><p>标记近 30 天进步最快的玩家，鼓励持续投入而非只看绝对排名。</p></div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 相关推荐 -->
+      <section class="section" id="related">
+        <div class="section-header">
+          <h2>相关推荐</h2>
+        </div>
+        <div class="tag-cloud">
+          <a href="/#featured">帧级判定关卡合集</a>
+          <a href="/#featured">无提示挑战专题</a>
+          <a href="/#featured">双人同步率提升方法</a>
+          <a href="/#deep-dive">耐力试炼训练计划</a>
+          <a href="/#ranking">新手入门排行</a>
+          <a href="/#featured">节奏切换技巧</a>
+          <a href="/#faq">盲选推理入门</a>
+          <a href="/#updates">赛季更新记录</a>
+        </div>
+      </section>
+
+      <!-- 补充板块：热门榜单 + 时间线 -->
+      <section class="section" id="ranking">
+        <div class="section-header">
+          <h2>本周热门榜单</h2>
+        </div>
+        <ul class="compact-list">
+          <li><span class="item-name">1. 深渊回响</span><span class="item-desc">极限边缘 · 热度 9.8 · 本周挑战 1.2 万次</span></li>
+          <li><span class="item-name">2. 零帧起手</span><span class="item-desc">精准控制 · 热度 9.5 · 本周挑战 9,800 次</span></li>
+          <li><span class="item-name">3. 逆流时钟</span><span class="item-desc">节奏大师 · 热度 9.3 · 本周挑战 8,600 次</span></li>
+          <li><span class="item-name">4. 静默深渊</span><span class="item-desc">静默模式 · 热度 9.1 · 本周挑战 7,400 次</span></li>
+          <li><span class="item-name">5. 双人同步</span><span class="item-desc">团队协作 · 热度 8.7 · 本周挑战 6,200 次</span></li>
+          <li><span class="item-name">6. 盲选迷宫</span><span class="item-desc">盲选挑战 · 热度 8.9 · 本周挑战 5,900 次</span></li>
+          <li><span class="item-name">7. 百轮耐力</span><span class="item-desc">耐力试炼 · 热度 8.6 · 本周挑战 4,700 次</span></li>
+          <li><span class="item-name">8. 极速冲刺</span><span class="item-desc">限时冲刺 · 热度 8.4 · 本周挑战 4,100 次</span></li>
+        </ul>
+      </section>
+
+      <section class="section" id="timeline">
+        <div class="section-header">
+          <h2>关键节点时间线</h2>
+        </div>
+        <ul class="timeline">
+          <li>
+            <div class="tl-date">2026-11-08</div>
+            <div class="tl-title">深渊回响噩梦难度上线</div>
+            <div class="tl-desc">随机干扰事件频率提升，动态难度调整同步启用。</div>
+          </li>
+          <li>
+            <div class="tl-date">2026-11-07</div>
+            <div class="tl-title">静默深渊第 3 赛季开启</div>
+            <div class="tl-desc">排行榜重置，新增“无瑕”成就与专属徽章。</div>
+          </li>
+          <li>
+            <div class="tl-date">2026-11-05</div>
+            <div class="tl-title">零帧起手判定窗口调整</div>
+            <div class="tl-desc">从 0.06 秒收紧至 0.05 秒，练习模式同步更新。</div>
+          </li>
+          <li>
+            <div class="tl-date">2026-11-01</div>
+            <div class="tl-title">寸止耐力周挑战赛启动</div>
+            <div class="tl-desc">累计参与 8000 人，耐力类关卡热度显著上升。</div>
+          </li>
+          <li>
+            <div class="tl-date">2026-10-28</div>
+            <div class="tl-title">全站排行新标签上线</div>
+            <div class="tl-desc">“稳步上升”标签标记 30 天内进步最快玩家。</div>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- 右辅助栏 -->
+    <aside class="sidebar">
+      <div class="sidebar-widget">
+        <h3>🔥 热门排行</h3>
+        <ul class="hot-list">
+          <li><span class="rank top3">1</span><a class="hot-title" href="/#featured">深渊回响 · 噩梦难度</a></li>
+          <li><span class="rank top3">2</span><a class="hot-title" href="/#featured">零帧起手 · 0.05 秒判定</a></li>
+          <li><span class="rank top3">3</span><a class="hot-title" href="/#featured">逆流时钟 · 倒带曲目</a></li>
+          <li><span class="rank">4</span><a class="hot-title" href="/#featured">静默深渊 · 第 3 赛季</a></li>
+          <li><span class="rank">5</span><a class="hot-title" href="/#featured">双人同步 · 跨平台匹配</a></li>
+          <li><span class="rank">6</span><a class="hot-title" href="/#featured">盲选迷宫 · 70% 隐藏</a></li>
+          <li><span class="rank">7</span><a class="hot-title" href="/#featured">百轮耐力 · 修复版</a></li>
+          <li><span class="rank">8</span><a class="hot-title" href="/#featured">极速冲刺 · 零失误周赛</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-widget">
+        <h3>🕒 更新流</h3>
+        <ul class="update-stream">
+          <li>深渊回响新增噩梦难度<span class="time">11 月 8 日 09:30</span></li>
+          <li>静默深渊赛季重置<span class="time">11 月 7 日 14:00</span></li>
+          <li>逆流时钟第 8 首曲目<span class="time">11 月 6 日 11:20</span></li>
+          <li>零帧起手判定收紧<span class="time">11 月 5 日 10:00</span></li>
+          <li>双人同步跨平台匹配<span class="time">11 月 4 日 16:45</span></li>
+          <li>百轮耐力卡顿修复<span class="time">11 月 3 日 13:10</span></li>
+          <li>盲选迷宫隐藏率调整<span class="time">11 月 2 日 18:30</span></li>
+          <li>极速冲刺周赛报名<span class="time">11 月 1 日 09:00</span></li>
+        </ul>
+      </div>
+      <div class="sidebar-widget">
+        <h3>📌 快捷入口</h3>
+        <ul class="hot-list" style="gap:8px;">
+          <li><a class="hot-title" href="/#guide">新手入门指南</a></li>
+          <li><a class="hot-title" href="/#ranking">本周热门榜单</a></li>
+          <li><a class="hot-title" href="/#deep-dive">类型差异解析</a></li>
+          <li><a class="hot-title" href="/#faq">常见问题速查</a></li>
+          <li><a class="hot-title" href="/#news">近期资讯汇总</a></li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <!-- 页尾 -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>寸止挑战在线</h3>
+          <p>汇聚寸止挑战的玩法规则、关卡攻略、进阶技巧与社区排行，从入门到硬核模式一站式了解。</p>
+        </div>
+        <div class="footer-col">
+          <h4>玩法类型</h4>
+          <ul>
+            <li><a href="/#featured">极限边缘</a></li>
+            <li><a href="/#featured">静默模式</a></li>
+            <li><a href="/#featured">节奏大师</a></li>
+            <li><a href="/#featured">耐力试炼</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>内容栏目</h4>
+          <ul>
+            <li><a href="/#featured">精选关卡</a></li>
+            <li><a href="/#updates">最新更新</a></li>
+            <li><a href="/#deep-dive">深度解析</a></li>
+            <li><a href="/#guide">体验指南</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>社区与帮助</h4>
+          <ul>
+            <li><a href="/#faq">常见问题</a></li>
+            <li><a href="/#community">用户评论</a></li>
+            <li><a href="/#news">相关资讯</a></li>
+            <li><a href="/#ranking">热门榜单</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 寸止挑战在线 · 部分内容为示例数据，仅用于展示页面结构</span>
+        <span>专注寸止挑战玩法与社区内容</span>
+      </div>
+    </div>
+  </footer>
+</body>
+              </html>
